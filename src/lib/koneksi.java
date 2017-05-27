@@ -14,17 +14,18 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class koneksi {
- public Connection Connect() throws ClassNotFoundException{
+    private static Connection mysqlkonek;
+    public Connection Connect() throws ClassNotFoundException{
         try {
             String url="jdbc:mysql://localhost:3306/ragunan"; //url database
             String user="root"; //user database
             String pass=""; //password database
             Class.forName("com.mysql.jdbc.Driver");
-            Connection conn = DriverManager.getConnection(url,user,pass);        
-            return conn;
+            mysqlkonek = DriverManager.getConnection(url,user,pass);        
+            return mysqlkonek;
         } catch (SQLException e) {
             System.err.println("koneksi gagal "+e.getMessage()); //perintah menampilkan error pada koneksi
         }
-        return null;
+        return mysqlkonek;
     }        
 }
