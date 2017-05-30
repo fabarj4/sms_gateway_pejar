@@ -17,7 +17,7 @@ public class koneksi {
     private static Connection mysqlkonek;
     public Connection Connect() throws ClassNotFoundException{
         try {
-            String url="jdbc:mysql://localhost:3306/ragunan"; //url database
+            String url="jdbc:mysql://localhost:3306/pejar"; //url database
             String user="root"; //user database
             String pass=""; //password database
             Class.forName("com.mysql.jdbc.Driver");
