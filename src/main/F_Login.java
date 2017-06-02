@@ -10,7 +10,6 @@ package main;
  * @author F
  */
 
-import com.harshadura.gsm.smsdura.GsmModem;
 import java.sql.Connection;
 import java.util.logging.Level;
 import java.util.logging.Logger;
