@@ -10,10 +10,16 @@ package main;
  * @author F
  */
 
+import com.harshadura.gsm.smsdura.GsmModem;
 import java.sql.Connection;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import lib.koneksi;
+
+import javax.swing.JOptionPane;
+import java.awt.event.KeyEvent;
+import java.sql.ResultSet;
+import java.sql.Statement;
 
 public class F_Login extends javax.swing.JFrame {
 
@@ -21,10 +27,25 @@ public class F_Login extends javax.swing.JFrame {
      * Creates new form F_Login
      */
     private koneksi kon;
+    private int modehalaman = 1;
+    private String username,password,confpass, batastxt;
+    private String kueri;
+    private String userpengguna,passpengguna;
     
     public F_Login() {
         initComponents();
         kon = new koneksi();
+        
+        if (modehalaman == 1){
+           lbl_judul.setText("Login");
+           txt_confpass.setVisible(false);
+           lbl_confpass.setVisible(false);
+           lbl_txt_username.setVisible(false);
+           lbl_txt_password.setVisible(false);
+           lbl_txt_confpass.setVisible(false);
+        }
+        
+        
     }
 
     /**
@@ -35,30 +56,89 @@ public class F_Login extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-        java.awt.GridBagConstraints gridBagConstraints;
 
         txt_username = new javax.swing.JTextField();
-        txt_password = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        lbl_username = new javax.swing.JLabel();
+        lbl_password = new javax.swing.JLabel();
+        btn_login = new javax.swing.JButton();
+        btn_register = new javax.swing.JButton();
+        lbl_confpass = new javax.swing.JLabel();
+        lbl_judul = new javax.swing.JLabel();
+        lbl_txt_username = new javax.swing.JLabel();
+        lbl_txt_confpass = new javax.swing.JLabel();
+        lbl_txt_password = new javax.swing.JLabel();
+        txt_password = new javax.swing.JPasswordField();
+        txt_confpass = new javax.swing.JPasswordField();
+        btn_exit = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setLocationByPlatform(true);
+        setResizable(false);
 
-        txt_username.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_usernameActionPerformed(evt);
+        txt_username.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        txt_username.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_usernameKeyTyped(evt);
             }
         });
 
-        jLabel1.setText("Username");
+        lbl_username.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        lbl_username.setText("Username                     :");
 
-        jLabel2.setText("Password");
+        lbl_password.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        lbl_password.setText("Password                     :");
 
-        jButton1.setText("Login");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btn_login.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        btn_login.setText("Login");
+        btn_login.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btn_loginActionPerformed(evt);
+            }
+        });
+
+        btn_register.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        btn_register.setText("Register");
+        btn_register.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_registerActionPerformed(evt);
+            }
+        });
+
+        lbl_confpass.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        lbl_confpass.setText("Confirmation Password :");
+
+        lbl_judul.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
+        lbl_judul.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl_judul.setText("Judul");
+
+        lbl_txt_username.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        lbl_txt_username.setText("*Maksimal 11 Angka*");
+
+        lbl_txt_confpass.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        lbl_txt_confpass.setText("*Maksimal 11 Angka*");
+
+        lbl_txt_password.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        lbl_txt_password.setText("*Maksimal 11 Angka*");
+
+        txt_password.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        txt_password.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_passwordKeyTyped(evt);
+            }
+        });
+
+        txt_confpass.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        txt_confpass.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_confpassKeyTyped(evt);
+            }
+        });
+
+        btn_exit.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        btn_exit.setText("Exit");
+        btn_exit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_exitActionPerformed(evt);
             }
         });
 
@@ -66,54 +146,192 @@ public class F_Login extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 160, Short.MAX_VALUE)
+                .addComponent(lbl_judul, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(160, 160, 160))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(50, 50, 50)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(113, 113, 113)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel1))
-                        .addGap(44, 44, 44)
+                        .addComponent(btn_exit, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btn_register, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(41, 41, 41)
+                        .addComponent(btn_login, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(lbl_confpass, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lbl_username, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lbl_password, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txt_username, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txt_password, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(159, 159, 159)
-                        .addComponent(jButton1)))
-                .addContainerGap())
+                            .addComponent(lbl_txt_username, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txt_username, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lbl_txt_confpass, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lbl_txt_password, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txt_password)
+                            .addComponent(txt_confpass))))
+                .addGap(50, 50, 50))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(107, 107, 107)
+                .addGap(50, 50, 50)
+                .addComponent(lbl_judul)
+                .addGap(50, 50, 50)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txt_password, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
-                .addGap(18, 18, 18)
+                    .addComponent(lbl_username)
+                    .addComponent(txt_username))
+                .addGap(5, 5, 5)
+                .addComponent(lbl_txt_username, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(14, 14, 14)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(txt_username, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jButton1)
-                .addContainerGap())
+                    .addComponent(lbl_password)
+                    .addComponent(txt_password, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(6, 6, 6)
+                .addComponent(lbl_txt_password, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbl_confpass)
+                    .addComponent(txt_confpass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lbl_txt_confpass, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(21, 21, 21)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btn_register, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_login, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_exit, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(50, 50, 50))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txt_usernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_usernameActionPerformed
-      // TODO add your handling code here:
-    }//GEN-LAST:event_txt_usernameActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        try {
-            // TODO add your handling code here:
-            Connection con = kon.Connect();
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(F_Login.class.getName()).log(Level.SEVERE, null, ex);
-            System.out.println("error : "+ex.getMessage());
+    private void btn_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_loginActionPerformed
+        if (modehalaman == 2){
+           modehalaman = 1;
+           lbl_judul.setText("Login");
+           btn_login.setText("Login");
+           btn_exit.setVisible(true);
+           txt_confpass.setVisible(false);
+           lbl_confpass.setVisible(false);
+           lbl_txt_username.setVisible(false);
+           lbl_txt_password.setVisible(false);
+           lbl_txt_confpass.setVisible(false);
+           txt_username.setText("");
+           txt_password.setText("");
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+        else {
+            //Connection con = kon.Connect();
+            
+            username = txt_username.getText();
+            password = txt_password.getText();        
+            try{
+                Statement stasql = (Statement)kon.Connect().createStatement();
+                ResultSet runkueri = stasql.executeQuery("select * from user where username = '"+username+"';");
+                while (runkueri.next()) {
+                    userpengguna = runkueri.getString("username");
+                    passpengguna = runkueri.getString("password");
+                }           
+                if(userpengguna.equals(username) && passpengguna.equals(password)){
+                    JOptionPane.showMessageDialog(null,"Berhasil Masuk\nSelamat Datang "+username);
+                    
+                    //Statement setelah login berhasil
+                    
+                }
+                else{
+                    JOptionPane.showMessageDialog(null,"Nama Akun atau Kata Sandi Salah");
+                    txt_username.setText("");
+                    txt_password.setText("");
+                }           
+                stasql.close();
+            }
+            catch(Exception e){
+                JOptionPane.showMessageDialog(null,"Nama Akun atau Kata Sandi Salah");
+                txt_username.setText("");
+                txt_password.setText("");
+            }
+            
+            /*} catch (ClassNotFoundException ex) {
+                Logger.getLogger(F_Login.class.getName()).log(Level.SEVERE, null, ex);
+                System.out.println("error : "+ex.getMessage());
+            }*/
+        }
+    }//GEN-LAST:event_btn_loginActionPerformed
+
+    private void btn_registerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_registerActionPerformed
+        if (modehalaman == 1){
+            modehalaman = 2;
+            lbl_judul.setText("Register");
+            btn_login.setText("Back");
+            btn_exit.setVisible(false);
+            txt_confpass.setVisible(true);
+            lbl_confpass.setVisible(true);
+            lbl_txt_username.setVisible(true);
+            lbl_txt_password.setVisible(true);
+            lbl_txt_confpass.setVisible(true);
+            txt_username.setText("");
+            txt_password.setText("");
+            txt_confpass.setText("");
+        }
+        else {
+            username = txt_username.getText();
+            password = txt_password.getText();
+            confpass = txt_confpass.getText();
+            
+            if (password.equals(confpass) && username.length() != 0 && password.length() != 0){
+                try{
+                    Statement stasql = (Statement)kon.Connect().createStatement();
+                    kueri=("insert into user (username,password) values ('"+username+"','"+password+"');");
+                    stasql.executeUpdate(kueri);                              
+                    stasql.close();
+                    JOptionPane.showMessageDialog(null,"Pendaftaran Berhasil");
+                    btn_login.doClick();
+                } catch(Exception t){
+                    JOptionPane.showMessageDialog(null,"Pendaftaran Akun Gagal\nNama Pengguna Sudah Digunakan");
+                }
+            }
+            else{
+                JOptionPane.showMessageDialog(null,"Terdapat Kesalahan Pada Pengisian Data");
+            }
+        }
+        
+    }//GEN-LAST:event_btn_registerActionPerformed
+
+    private void txt_usernameKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_usernameKeyTyped
+        if(txt_username.getText().length()<20){
+            txt_username.setEditable(true);
+        }
+        else {                    
+            batastxt = txt_username.getText().substring(0, 19);
+            txt_username.setText(batastxt);
+        }
+    }//GEN-LAST:event_txt_usernameKeyTyped
+
+    private void txt_passwordKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_passwordKeyTyped
+        if(txt_password.getText().length()<16){
+            txt_password.setEditable(true);
+        }
+        else {                    
+            batastxt = txt_password.getText().substring(0, 15);
+            txt_password.setText(batastxt);
+        }
+    }//GEN-LAST:event_txt_passwordKeyTyped
+
+    private void txt_confpassKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_confpassKeyTyped
+        if(txt_confpass.getText().length()<16){
+            txt_confpass.setEditable(true);
+        }
+        else {                    
+            batastxt = txt_confpass.getText().substring(0, 15);
+            txt_confpass.setText(batastxt);
+        }
+    }//GEN-LAST:event_txt_confpassKeyTyped
+
+    private void btn_exitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_exitActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_btn_exitActionPerformed
 
     /**
      * @param args the command line arguments
@@ -153,10 +371,18 @@ public class F_Login extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JTextField txt_password;
+    private javax.swing.JButton btn_exit;
+    private javax.swing.JButton btn_login;
+    private javax.swing.JButton btn_register;
+    private javax.swing.JLabel lbl_confpass;
+    private javax.swing.JLabel lbl_judul;
+    private javax.swing.JLabel lbl_password;
+    private javax.swing.JLabel lbl_txt_confpass;
+    private javax.swing.JLabel lbl_txt_password;
+    private javax.swing.JLabel lbl_txt_username;
+    private javax.swing.JLabel lbl_username;
+    private javax.swing.JPasswordField txt_confpass;
+    private javax.swing.JPasswordField txt_password;
     private javax.swing.JTextField txt_username;
     // End of variables declaration//GEN-END:variables
 }
