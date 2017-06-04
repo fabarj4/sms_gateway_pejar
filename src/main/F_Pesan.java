@@ -19,6 +19,8 @@ import java.util.ArrayList;
 import javax.swing.DefaultListModel;
 import javax.swing.JCheckBox;
 import javax.swing.JOptionPane;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 import javax.swing.table.TableColumn;
@@ -80,7 +82,35 @@ public class F_Pesan extends javax.swing.JFrame {
                 }else if(cmbBox_Tipe.getSelectedItem().toString().toLowerCase().equals("orang tua siswa")){
                     tipe = 2;
                 }
-                JOptionPane.showMessageDialog(null, "data : "+cmbBox_Tipe.getSelectedItem().toString()+" tipe = "+tipe);
+                try {
+                    if(tipe!=3){
+                        getKontak(tipe);
+                    }else{
+                        getKontak();
+                    }
+                } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(F_Pesan.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (SQLException ex) {
+                    Logger.getLogger(F_Pesan.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                //JOptionPane.showMessageDialog(null, "data : "+cmbBox_Tipe.getSelectedItem().toString()+" tipe = "+tipe);
+            }
+        });
+        
+        in_search.getDocument().addDocumentListener(new DocumentListener() {
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
             }
         });
     }
@@ -127,6 +157,13 @@ public class F_Pesan extends javax.swing.JFrame {
             }
         });
 
+        in_search.addInputMethodListener(new java.awt.event.InputMethodListener() {
+            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
+            }
+            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
+                in_searchInputMethodTextChanged(evt);
+            }
+        });
         in_search.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 in_searchActionPerformed(evt);
@@ -226,6 +263,10 @@ public class F_Pesan extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(null, hp);
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void in_searchInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_in_searchInputMethodTextChanged
+        
+    }//GEN-LAST:event_in_searchInputMethodTextChanged
+
     /**
      * @param args the command line arguments
      */
@@ -319,18 +360,41 @@ public class F_Pesan extends javax.swing.JFrame {
         table_kontak.setModel(c_model);
     }
     
-    private void getKontak(int tipe) throws ClassNotFoundException, SQLException{
-        String query = "SELECT * FROM kontak WHERE tipe = "+tipe;
+    private void getKontak(int tipeKontak) throws ClassNotFoundException, SQLException{
+        String query = "SELECT * FROM kontak WHERE tipe = "+tipeKontak;
         Statement st = konek.Connect().createStatement();
         ResultSet sql = st.executeQuery(query);
         int baris=1;
         int i=0;
+        String tipe = null;
+        
+        customTableModel c_model = new customTableModel();
+        
         while(sql.next()){
             baris++;
         }
-        String isi[][] = new String[baris][4];
+        String isi[][] = new String[baris][5];
         sql.beforeFirst();
         while(sql.next()){
+            switch(sql.getInt("tipe")){
+                case 0:
+                    tipe= "Guru";
+                    break;
+                case 1  :
+                    tipe= "Siswa";
+                    break;
+                case 2:
+                    tipe= "Orang Tua Siswa";
+                    break;
+            }
+            c_model.addRow(new Object[]{
+                false,
+                Integer.toString(i+1),
+                sql.getString("nama"),
+                sql.getString("hp"),
+                tipe,
+            });
+            /*
             isi[i][0]=Integer.toString(i+1);
             isi[i][1]=sql.getString("nama");
             isi[i][2]=sql.getString("hp");
@@ -345,11 +409,71 @@ public class F_Pesan extends javax.swing.JFrame {
                     isi[i][3]= "Orang Tua Siswa";
                     break;
             }
+            isi[i][4]="false";*/
             i++;
         }
-        String namakolom[] = {"NO","Nama","HP","Ket"};
-        DefaultTableModel model = new DefaultTableModel(isi,namakolom);
-        table_kontak.setModel(model);
+        String namakolom[] = {"","NO","Nama","HP","Ket"};
+        //DefaultTableModel model = new DefaultTableModel(isi,namakolom);
+        
+        table_kontak.setModel(c_model);
+    }
+    
+    private void getKontak(String cari) throws ClassNotFoundException, SQLException{
+        String query = "SELECT * FROM kontak WHERE nama like '%"+cari+"%'";
+        Statement st = konek.Connect().createStatement();
+        ResultSet sql = st.executeQuery(query);
+        int baris=1;
+        int i=0;
+        String tipe = null;
+        
+        customTableModel c_model = new customTableModel();
+        
+        while(sql.next()){
+            baris++;
+        }
+        String isi[][] = new String[baris][5];
+        sql.beforeFirst();
+        while(sql.next()){
+            switch(sql.getInt("tipe")){
+                case 0:
+                    tipe= "Guru";
+                    break;
+                case 1  :
+                    tipe= "Siswa";
+                    break;
+                case 2:
+                    tipe= "Orang Tua Siswa";
+                    break;
+            }
+            c_model.addRow(new Object[]{
+                false,
+                Integer.toString(i+1),
+                sql.getString("nama"),
+                sql.getString("hp"),
+                tipe,
+            });
+            /*
+            isi[i][0]=Integer.toString(i+1);
+            isi[i][1]=sql.getString("nama");
+            isi[i][2]=sql.getString("hp");
+            switch(sql.getInt("tipe")){
+                case 0:
+                    isi[i][3]= "Guru";
+                    break;
+                case 1  :
+                    isi[i][3]= "Siswa";
+                    break;
+                case 2:
+                    isi[i][3]= "Orang Tua Siswa";
+                    break;
+            }
+            isi[i][4]="false";*/
+            i++;
+        }
+        String namakolom[] = {"","NO","Nama","HP","Ket"};
+        //DefaultTableModel model = new DefaultTableModel(isi,namakolom);
+        
+        table_kontak.setModel(c_model);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -112,6 +112,7 @@
     </Component>
     <Component class="javax.swing.JTextField" name="in_search">
       <Events>
+        <EventHandler event="inputMethodTextChanged" listener="java.awt.event.InputMethodListener" parameters="java.awt.event.InputMethodEvent" handler="in_searchInputMethodTextChanged"/>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="in_searchActionPerformed"/>
       </Events>
     </Component>
