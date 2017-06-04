@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package logic;
+package lib;
 
 import java.util.ArrayList;
 import org.smslib.AGateway;
@@ -17,7 +17,7 @@ import org.smslib.modem.SerialModemGateway;
  *
  * @author F
  */
-public class Ex_sendmessage {
+public class Pesan {
     public void sendMessage(ArrayList no_hp, String pesan) throws Exception {
         OutboundNotification outboundNotification = new OutboundNotification();
         System.out.println("Example: Send message from a serial gsm modem.");
@@ -67,17 +67,4 @@ public class Ex_sendmessage {
             System.out.println(msg);
         }
     }
-    
-    public static void main(String args[])
-    {
-                Ex_sendmessage app = new Ex_sendmessage();
-                try
-                {
-                        //app.doIt();
-                }
-                catch (Exception e)
-                {
-                        e.printStackTrace();
-                }
-        }
 }

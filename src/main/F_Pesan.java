@@ -14,8 +14,11 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.ArrayList;
 import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import lib.Pesan;
 import lib.koneksi;
 
 public class F_Pesan extends javax.swing.JFrame {
@@ -24,6 +27,8 @@ public class F_Pesan extends javax.swing.JFrame {
      * Creates new form F_Pesan
      */
     private koneksi konek = new koneksi();
+    private Pesan  pesan = new Pesan();;
+    
     
     public F_Pesan() {
         initComponents();
@@ -46,17 +51,19 @@ public class F_Pesan extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        table_kontak = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
         in_search = new javax.swing.JTextField();
-        b_search = new javax.swing.JButton();
         jComboBox1 = new javax.swing.JComboBox<>();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        txt_pesan = new javax.swing.JTextArea();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        table_kontak.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -67,7 +74,7 @@ public class F_Pesan extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(table_kontak);
 
         jButton1.setText("jButton1");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -82,13 +89,20 @@ public class F_Pesan extends javax.swing.JFrame {
             }
         });
 
-        b_search.setText("cari");
-
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Semua", "Guru", "Siswa", "Orang Tua Siswa" }));
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane2.setViewportView(jTextArea1);
+        txt_pesan.setColumns(20);
+        txt_pesan.setRows(5);
+        jScrollPane2.setViewportView(txt_pesan);
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel1.setText("Pesan :");
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel2.setText("Cari :");
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel3.setText("Tipe :");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -99,33 +113,40 @@ public class F_Pesan extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(in_search, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(38, 38, 38)
-                        .addComponent(b_search)))
+                        .addComponent(jLabel2)
+                        .addGap(18, 18, 18)
+                        .addComponent(in_search, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(47, 47, 47)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 346, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(20, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButton1)
-                        .addGap(159, 159, 159))))
+                        .addGap(159, 159, 159))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(47, 47, 47)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 346, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(20, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(27, 27, 27)
+                .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(in_search, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(b_search))
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel3))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(114, Short.MAX_VALUE)
+                .addContainerGap(86, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(36, 36, 36)
                 .addComponent(jButton1)
@@ -140,7 +161,25 @@ public class F_Pesan extends javax.swing.JFrame {
     }//GEN-LAST:event_in_searchActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        int count_check = 0;
+        ArrayList hp= new ArrayList();
+        for(int i = 0;i<table_kontak.getRowCount();i++){
+            Boolean check = Boolean.valueOf(table_kontak.getValueAt(i,0).toString());
+            String no_hp = table_kontak.getValueAt(i, 3).toString();
+            if(check){
+                count_check +=1;
+                hp.add(no_hp);
+            }
+        }
+        for(int i=0;i<hp.size();i++){
+            System.out.println(hp.get(i).toString());
+        }
+        try {
+            pesan.sendMessage(hp, txt_pesan.getText());
+        } catch (Exception ex) {
+            Logger.getLogger(F_Pesan.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        JOptionPane.showMessageDialog(null, hp);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -184,6 +223,64 @@ public class F_Pesan extends javax.swing.JFrame {
         ResultSet sql = st.executeQuery(query);
         int baris=1;
         int i=0;
+        String tipe = null;
+        
+        customTableModel c_model = new customTableModel();
+        
+        while(sql.next()){
+            baris++;
+        }
+        String isi[][] = new String[baris][5];
+        sql.beforeFirst();
+        while(sql.next()){
+            switch(sql.getInt("tipe")){
+                case 0:
+                    tipe= "Guru";
+                    break;
+                case 1  :
+                    tipe= "Siswa";
+                    break;
+                case 2:
+                    tipe= "Orang Tua Siswa";
+                    break;
+            }
+            c_model.addRow(new Object[]{
+                false,
+                Integer.toString(i+1),
+                sql.getString("nama"),
+                sql.getString("hp"),
+                tipe,
+            });
+            /*
+            isi[i][0]=Integer.toString(i+1);
+            isi[i][1]=sql.getString("nama");
+            isi[i][2]=sql.getString("hp");
+            switch(sql.getInt("tipe")){
+                case 0:
+                    isi[i][3]= "Guru";
+                    break;
+                case 1  :
+                    isi[i][3]= "Siswa";
+                    break;
+                case 2:
+                    isi[i][3]= "Orang Tua Siswa";
+                    break;
+            }
+            isi[i][4]="false";*/
+            i++;
+        }
+        String namakolom[] = {"","NO","Nama","HP","Ket"};
+        //DefaultTableModel model = new DefaultTableModel(isi,namakolom);
+        
+        table_kontak.setModel(c_model);
+    }
+    
+    private void getKontak(int tipe) throws ClassNotFoundException, SQLException{
+        String query = "SELECT * FROM kontak WHERE tipe = "+tipe;
+        Statement st = konek.Connect().createStatement();
+        ResultSet sql = st.executeQuery(query);
+        int baris=1;
+        int i=0;
         while(sql.next()){
             baris++;
         }
@@ -208,17 +305,49 @@ public class F_Pesan extends javax.swing.JFrame {
         }
         String namakolom[] = {"NO","Nama","HP","Ket"};
         DefaultTableModel model = new DefaultTableModel(isi,namakolom);
-        jTable1.setModel(model);
+        table_kontak.setModel(model);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton b_search;
     private javax.swing.JTextField in_search;
     private javax.swing.JButton jButton1;
     private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JTable table_kontak;
+    private javax.swing.JTextArea txt_pesan;
     // End of variables declaration//GEN-END:variables
+    
+    public class customTableModel extends DefaultTableModel{
+
+        public customTableModel() {
+            super(new String[]{"","NO","Nama","HP","Ket"},0);
+        }
+        
+        @Override
+        public Class<?> getColumnClass(int columnIndex) {
+            switch(columnIndex){
+                case 0 :
+                    return Boolean.class;
+                case 1 :
+                    return String.class;
+                case 2 :
+                    return String.class;
+                case 3 :
+                    return String.class;
+                case 4 :
+                    return String.class;
+                default :
+                    return String.class;
+            }
+        }
+        
+        @Override
+        public boolean isCellEditable(int row, int column) {
+          return column == 0;
+        }
+    }
 }
