@@ -9,6 +9,7 @@ package main;
  *
  * @author F
  */
+import java.awt.event.ActionEvent;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -16,9 +17,13 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
+import javax.swing.JCheckBox;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
+import javax.swing.table.TableColumn;
 import lib.Pesan;
+import lib.TableListener;
 import lib.koneksi;
 
 public class F_Pesan extends javax.swing.JFrame {
@@ -27,9 +32,9 @@ public class F_Pesan extends javax.swing.JFrame {
      * Creates new form F_Pesan
      */
     private koneksi konek = new koneksi();
-    private Pesan  pesan = new Pesan();;
+    private Pesan  pesan = new Pesan();
     
-    
+   
     public F_Pesan() {
         initComponents();
         try {
@@ -39,6 +44,45 @@ public class F_Pesan extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(F_Pesan.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
+        //digunakan untuk mengambil respon klik user di header table
+        JTableHeader header = table_kontak.getTableHeader();
+        header.addMouseListener(new TableListener(table_kontak));
+        
+        //digunakan untuk mengambil respon klik di baris
+        table_kontak.addMouseListener(new java.awt.event.MouseAdapter() {
+            @Override
+            public void mouseClicked(java.awt.event.MouseEvent evt){
+                int row = table_kontak.rowAtPoint(evt.getPoint());
+                int col = table_kontak.columnAtPoint(evt.getPoint());
+                //JOptionPane.showMessageDialog(null, "baris ke - "+row);
+                if(col!=0){
+                    Boolean check = Boolean.valueOf(table_kontak.getValueAt(row, 0).toString());
+                    if(check){
+                        table_kontak.setValueAt(false, row, 0);
+                    }else{
+                        table_kontak.setValueAt(true, row, 0);
+                    }
+                }
+            }
+        });
+        
+        cmbBox_Tipe.addActionListener(new java.awt.event.ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int tipe = 0;
+                if(cmbBox_Tipe.getSelectedItem().toString().toLowerCase().equals("semua")){
+                    tipe = 3;
+                }else if(cmbBox_Tipe.getSelectedItem().toString().toLowerCase().equals("guru")){
+                    tipe = 0;
+                }else if(cmbBox_Tipe.getSelectedItem().toString().toLowerCase().equals("siswa")){
+                    tipe = 1;
+                }else if(cmbBox_Tipe.getSelectedItem().toString().toLowerCase().equals("orang tua siswa")){
+                    tipe = 2;
+                }
+                JOptionPane.showMessageDialog(null, "data : "+cmbBox_Tipe.getSelectedItem().toString()+" tipe = "+tipe);
+            }
+        });
     }
 
     /**
@@ -54,7 +98,7 @@ public class F_Pesan extends javax.swing.JFrame {
         table_kontak = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
         in_search = new javax.swing.JTextField();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        cmbBox_Tipe = new javax.swing.JComboBox<>();
         jScrollPane2 = new javax.swing.JScrollPane();
         txt_pesan = new javax.swing.JTextArea();
         jLabel1 = new javax.swing.JLabel();
@@ -76,7 +120,7 @@ public class F_Pesan extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(table_kontak);
 
-        jButton1.setText("jButton1");
+        jButton1.setText("Kirim");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -89,7 +133,7 @@ public class F_Pesan extends javax.swing.JFrame {
             }
         });
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Semua", "Guru", "Siswa", "Orang Tua Siswa" }));
+        cmbBox_Tipe.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Semua", "Guru", "Siswa", "Orang Tua Siswa" }));
 
         txt_pesan.setColumns(20);
         txt_pesan.setRows(5);
@@ -115,7 +159,7 @@ public class F_Pesan extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cmbBox_Tipe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel2)
                         .addGap(18, 18, 18)
@@ -137,7 +181,7 @@ public class F_Pesan extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmbBox_Tipe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(in_search, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2)
                     .addComponent(jLabel3))
@@ -175,7 +219,7 @@ public class F_Pesan extends javax.swing.JFrame {
             System.out.println(hp.get(i).toString());
         }
         try {
-            pesan.sendMessage(hp, txt_pesan.getText());
+            //pesan.sendMessage(hp, txt_pesan.getText());
         } catch (Exception ex) {
             Logger.getLogger(F_Pesan.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -309,9 +353,9 @@ public class F_Pesan extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> cmbBox_Tipe;
     private javax.swing.JTextField in_search;
     private javax.swing.JButton jButton1;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -324,7 +368,7 @@ public class F_Pesan extends javax.swing.JFrame {
     public class customTableModel extends DefaultTableModel{
 
         public customTableModel() {
-            super(new String[]{"","NO","Nama","HP","Ket"},0);
+            super(new String[]{"Ceklis","NO","Nama","HP","Ket"},0);
         }
         
         @Override
@@ -345,9 +389,12 @@ public class F_Pesan extends javax.swing.JFrame {
             }
         }
         
+        
         @Override
         public boolean isCellEditable(int row, int column) {
           return column == 0;
         }
     }
+    
+    
 }
