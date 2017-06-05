@@ -56,7 +56,7 @@ public class F_Register extends javax.swing.JFrame {
         btn_back = new javax.swing.JButton();
         btn_register = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setLocationByPlatform(true);
         setResizable(false);
 

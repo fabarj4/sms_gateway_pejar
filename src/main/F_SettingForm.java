@@ -56,7 +56,7 @@ public class F_SettingForm extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         txt_port_database = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel1.setText("HOST Database");
