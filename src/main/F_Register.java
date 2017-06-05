@@ -54,7 +54,7 @@ public class F_Register extends javax.swing.JFrame {
         lbl_confpass = new javax.swing.JLabel();
         txt_confpass = new javax.swing.JPasswordField();
         lbl_txt_confpass = new javax.swing.JLabel();
-        btn_exit = new javax.swing.JButton();
+        btn_back = new javax.swing.JButton();
         btn_register = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -107,11 +107,11 @@ public class F_Register extends javax.swing.JFrame {
         lbl_txt_confpass.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         lbl_txt_confpass.setText("*Maksimal 16 Karakter*");
 
-        btn_exit.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
-        btn_exit.setText("Exit");
-        btn_exit.addActionListener(new java.awt.event.ActionListener() {
+        btn_back.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        btn_back.setText("Back");
+        btn_back.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_exitActionPerformed(evt);
+                btn_backActionPerformed(evt);
             }
         });
 
@@ -135,7 +135,7 @@ public class F_Register extends javax.swing.JFrame {
                 .addGap(50, 50, 50)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btn_exit, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btn_back, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btn_register, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
@@ -179,7 +179,7 @@ public class F_Register extends javax.swing.JFrame {
                 .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_register, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_exit, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btn_back, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(50, 50, 50))
         );
 
@@ -216,9 +216,11 @@ public class F_Register extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_txt_confpassKeyTyped
 
-    private void btn_exitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_exitActionPerformed
-        System.exit(0);
-    }//GEN-LAST:event_btn_exitActionPerformed
+    private void btn_backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_backActionPerformed
+        
+        //kembali ke halaman sebelumnya
+        
+    }//GEN-LAST:event_btn_backActionPerformed
 
     private void btn_registerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_registerActionPerformed
         username = txt_username.getText();
@@ -234,6 +236,7 @@ public class F_Register extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null,"Pendaftaran Berhasil");
                 
                 //Statement setelah berhasil register
+                
             } catch(Exception t){
                 JOptionPane.showMessageDialog(null,"Pendaftaran Akun Gagal\nNama Pengguna Sudah Digunakan");
             }
@@ -285,7 +288,7 @@ public class F_Register extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btn_exit;
+    private javax.swing.JButton btn_back;
     private javax.swing.JButton btn_register;
     private javax.swing.JLabel lbl_confpass;
     private javax.swing.JLabel lbl_judul;
