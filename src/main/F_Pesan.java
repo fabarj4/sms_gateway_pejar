@@ -10,6 +10,9 @@ package main;
  * @author F
  */
 import java.awt.event.ActionEvent;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -35,8 +38,8 @@ public class F_Pesan extends javax.swing.JFrame {
      */
     private koneksi konek = new koneksi();
     private Pesan  pesan = new Pesan();
+    private F_ProgressBar pgBar = new F_ProgressBar();
     
-   
     public F_Pesan() {
         initComponents();
         try {
@@ -44,6 +47,8 @@ public class F_Pesan extends javax.swing.JFrame {
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(F_Pesan.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
+            Logger.getLogger(F_Pesan.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
             Logger.getLogger(F_Pesan.class.getName()).log(Level.SEVERE, null, ex);
         }
         
@@ -92,27 +97,80 @@ public class F_Pesan extends javax.swing.JFrame {
                     Logger.getLogger(F_Pesan.class.getName()).log(Level.SEVERE, null, ex);
                 } catch (SQLException ex) {
                     Logger.getLogger(F_Pesan.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (IOException ex) {
+                    Logger.getLogger(F_Pesan.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 //JOptionPane.showMessageDialog(null, "data : "+cmbBox_Tipe.getSelectedItem().toString()+" tipe = "+tipe);
             }
         });
         
-        in_search.getDocument().addDocumentListener(new DocumentListener() {
+        in_search.getDocument().addDocumentListener(new DocumentListener(){
             @Override
             public void insertUpdate(DocumentEvent e) {
-                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+                System.out.println(in_search.getText());
+                int tipe = 0;
+                if(cmbBox_Tipe.getSelectedItem().toString().toLowerCase().equals("semua")){
+                    tipe = 3;
+                }else if(cmbBox_Tipe.getSelectedItem().toString().toLowerCase().equals("guru")){
+                    tipe = 0;
+                }else if(cmbBox_Tipe.getSelectedItem().toString().toLowerCase().equals("siswa")){
+                    tipe = 1;
+                }else if(cmbBox_Tipe.getSelectedItem().toString().toLowerCase().equals("orang tua siswa")){
+                    tipe = 2;
+                }
+                try {
+                    getKontak(in_search.getText(),tipe);
+                } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(F_Pesan.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (SQLException ex) {
+                    Logger.getLogger(F_Pesan.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (IOException ex) {
+                    Logger.getLogger(F_Pesan.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
 
             @Override
             public void removeUpdate(DocumentEvent e) {
-                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+                try {
+                    int tipe = 0;
+                    if(cmbBox_Tipe.getSelectedItem().toString().toLowerCase().equals("semua")){
+                        tipe = 3;
+                    }else if(cmbBox_Tipe.getSelectedItem().toString().toLowerCase().equals("guru")){
+                        tipe = 0;
+                    }else if(cmbBox_Tipe.getSelectedItem().toString().toLowerCase().equals("siswa")){
+                        tipe = 1;
+                    }else if(cmbBox_Tipe.getSelectedItem().toString().toLowerCase().equals("orang tua siswa")){
+                        tipe = 2;
+                    }
+                    getKontak(in_search.getText(),tipe);
+                } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(F_Pesan.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (SQLException ex) {
+                    Logger.getLogger(F_Pesan.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (IOException ex) {
+                    Logger.getLogger(F_Pesan.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
 
             @Override
             public void changedUpdate(DocumentEvent e) {
-                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+                System.out.println(in_search.getText());
             }
         });
+        
+        /*
+        in_search.addKeyListener(new KeyAdapter(){
+            public void keyPressed(KeyEvent key){
+                try {
+                    getKontak(in_search.getText());
+                } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(F_Pesan.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (SQLException ex) {
+                    Logger.getLogger(F_Pesan.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                System.out.println(in_search.getText());
+            }
+        });*/
     }
 
     /**
@@ -202,16 +260,16 @@ public class F_Pesan extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(in_search, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton1)
-                        .addGap(159, 159, 159))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(47, 47, 47)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 346, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(20, Short.MAX_VALUE))))
+                        .addContainerGap(20, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton1)
+                        .addGap(159, 159, 159))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -243,7 +301,7 @@ public class F_Pesan extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         int count_check = 0;
-        ArrayList hp= new ArrayList();
+        ArrayList hp = new ArrayList();
         for(int i = 0;i<table_kontak.getRowCount();i++){
             Boolean check = Boolean.valueOf(table_kontak.getValueAt(i,0).toString());
             String no_hp = table_kontak.getValueAt(i, 3).toString();
@@ -256,11 +314,13 @@ public class F_Pesan extends javax.swing.JFrame {
             System.out.println(hp.get(i).toString());
         }
         try {
-            //pesan.sendMessage(hp, txt_pesan.getText());
+            //pgBar.setVisible(true);
+            pesan.sendMessage(hp, txt_pesan.getText());
+            //pgBar.setVisible(false);
         } catch (Exception ex) {
             Logger.getLogger(F_Pesan.class.getName()).log(Level.SEVERE, null, ex);
         }
-        JOptionPane.showMessageDialog(null, hp);
+        //JOptionPane.showMessageDialog(null, hp);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void in_searchInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_in_searchInputMethodTextChanged
@@ -302,7 +362,7 @@ public class F_Pesan extends javax.swing.JFrame {
         });
     }
     
-    private void getKontak() throws ClassNotFoundException, SQLException{
+    private void getKontak() throws ClassNotFoundException, SQLException, IOException{
         String query = "SELECT * FROM kontak";
         Statement st = konek.Connect().createStatement();
         ResultSet sql = st.executeQuery(query);
@@ -360,7 +420,7 @@ public class F_Pesan extends javax.swing.JFrame {
         table_kontak.setModel(c_model);
     }
     
-    private void getKontak(int tipeKontak) throws ClassNotFoundException, SQLException{
+    private void getKontak(int tipeKontak) throws ClassNotFoundException, SQLException, IOException{
         String query = "SELECT * FROM kontak WHERE tipe = "+tipeKontak;
         Statement st = konek.Connect().createStatement();
         ResultSet sql = st.executeQuery(query);
@@ -418,8 +478,13 @@ public class F_Pesan extends javax.swing.JFrame {
         table_kontak.setModel(c_model);
     }
     
-    private void getKontak(String cari) throws ClassNotFoundException, SQLException{
-        String query = "SELECT * FROM kontak WHERE nama like '%"+cari+"%'";
+    private void getKontak(String cari, int tipeKontak) throws ClassNotFoundException, SQLException, IOException{
+        String query = null;
+        if(tipeKontak == 3){
+            query = "SELECT * FROM kontak WHERE nama like '%"+cari+"%' || hp like '%"+cari+"%'";
+        }else{
+            query = "SELECT * FROM kontak WHERE (nama like '%"+cari+"%' || hp like '%"+cari+"%') && tipe ='"+tipeKontak+"'";
+        }
         Statement st = konek.Connect().createStatement();
         ResultSet sql = st.executeQuery(query);
         int baris=1;
@@ -475,21 +540,8 @@ public class F_Pesan extends javax.swing.JFrame {
         
         table_kontak.setModel(c_model);
     }
-
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> cmbBox_Tipe;
-    private javax.swing.JTextField in_search;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable table_kontak;
-    private javax.swing.JTextArea txt_pesan;
-    // End of variables declaration//GEN-END:variables
     
-    public class customTableModel extends DefaultTableModel{
+    private class customTableModel extends DefaultTableModel{
 
         public customTableModel() {
             super(new String[]{"Ceklis","NO","Nama","HP","Ket"},0);
@@ -519,6 +571,21 @@ public class F_Pesan extends javax.swing.JFrame {
           return column == 0;
         }
     }
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> cmbBox_Tipe;
+    private javax.swing.JTextField in_search;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable table_kontak;
+    private javax.swing.JTextArea txt_pesan;
+    // End of variables declaration//GEN-END:variables
+    
+    
     
     
 }

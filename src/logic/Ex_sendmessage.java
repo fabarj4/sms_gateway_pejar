@@ -5,12 +5,16 @@
  */
 package logic;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import org.smslib.AGateway;
+import org.smslib.GatewayException;
 import org.smslib.IOutboundMessageNotification;
 import org.smslib.Library;
 import org.smslib.OutboundMessage;
+import org.smslib.SMSLibException;
 import org.smslib.Service;
+import org.smslib.TimeoutException;
 import org.smslib.modem.SerialModemGateway;
 
 /**
@@ -65,6 +69,24 @@ public class Ex_sendmessage {
         public void process(AGateway gateway, OutboundMessage msg){
             System.out.println("Outbound handler called from Gateway: " + gateway.getGatewayId());
             System.out.println(msg);
+        }
+    }
+    
+    public boolean checkport(String port) {
+        try{
+        //OutboundNotification outboundNotification = new OutboundNotification();
+        System.out.println("ini didalam method "+port);
+        SerialModemGateway gateway = new SerialModemGateway("modem.com4", port, 9600, "", "");
+        //gateway.setInbound(true);
+        //gateway.setOutbound(true);
+        //Service.getInstance().setOutboundMessageNotification(outboundNotification);
+        Service.getInstance().addGateway(gateway);
+        Service.getInstance().startService();
+        Service.getInstance().stopService();
+        Service.getInstance().removeGateway(gateway);
+        return true;
+        }catch(Exception ex){
+            return false;
         }
     }
     

@@ -9,15 +9,21 @@ package lib;
  *
  * @author F
  */
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.Hashtable;
+import lib.SaveConfig;
+import lib.keyKonfigurasi;
 
 public class koneksi {
+    private SaveConfig config = new SaveConfig();
+    private keyKonfigurasi key = new keyKonfigurasi();
     private static Connection mysqlkonek;
-    public Connection Connect() throws ClassNotFoundException{
+    public Connection Connect() throws ClassNotFoundException, IOException{
         try {
-            String url="jdbc:mysql://localhost:3306/pejar"; //url database
+            String url="jdbc:mysql://"+config.getConfig().get(key.host)+":"+config.getConfig().get(key.port_database)+"/pejar"; //url database
             String user="root"; //user database
             String pass=""; //password database
             Class.forName("com.mysql.jdbc.Driver");
