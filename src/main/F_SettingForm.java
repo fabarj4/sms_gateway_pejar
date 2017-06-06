@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.util.Enumeration;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import lib.SaveConfig;
 import lib.keyKonfigurasi;
 /**
@@ -32,6 +33,24 @@ public class F_SettingForm extends javax.swing.JFrame {
             Logger.getLogger(F_SettingForm.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+    public F_SettingForm(boolean login) {
+        setResizable(false);
+        initComponents();
+        try {
+            getAllConfig(login);
+        } catch (IOException ex) {
+            Logger.getLogger(F_SettingForm.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        if(!login){
+         jLabel2.setVisible(false);
+         jLabel3.setVisible(false);
+         jLabel4.setVisible(false);
+         txt_header.setVisible(false);
+         txt_hp_server.setVisible(false);
+         cmb_port_modem.setVisible(false);
+        }
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -46,7 +65,7 @@ public class F_SettingForm extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         txt_port_database = new javax.swing.JTextField();
-        cmb_port_modem = new javax.swing.JComboBox<String>();
+        cmb_port_modem = new javax.swing.JComboBox<>();
         jButton1 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         txt_hp_server = new javax.swing.JTextField();
@@ -292,7 +311,7 @@ public class F_SettingForm extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        
+        dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MousePressed
@@ -346,10 +365,32 @@ public class F_SettingForm extends javax.swing.JFrame {
         });
     }
     
+    private void getAllConfig(boolean login) throws IOException{
+        txt_host.setText(config.getConfig().get(key.host));
+        txt_port_database.setText(config.getConfig().get(key.port_database));
+        if(login){
+        txt_hp_server.setText(config.getConfig().get(key.no_hp));
+        
+        Enumeration ports = CommPortIdentifier.getPortIdentifiers();
+        
+        while(ports.hasMoreElements())
+        {
+            CommPortIdentifier cpi = (CommPortIdentifier)ports.nextElement();
+            if(cpi.getPortType() == CommPortIdentifier.PORT_SERIAL){
+                cmb_port_modem.addItem(cpi.getName());
+                //System.out.println(cpi.getName());   
+            }
+        }
+        cmb_port_modem.setSelectedItem(config.getConfig().get(key.port_modem));
+        txt_header.setText(config.getConfig().get(key.header));
+        }
+    }
+    
     private void getAllConfig() throws IOException{
         txt_host.setText(config.getConfig().get(key.host));
         txt_port_database.setText(config.getConfig().get(key.port_database));
         txt_hp_server.setText(config.getConfig().get(key.no_hp));
+        
         Enumeration ports = CommPortIdentifier.getPortIdentifiers();
         
         while(ports.hasMoreElements())

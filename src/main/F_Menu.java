@@ -15,13 +15,20 @@ import main.F_SettingForm;
 
 public class F_Menu extends javax.swing.JFrame {
     
-
+    private boolean login;
     /**
      * Creates new form F_Menu
      */
     public F_Menu() {
         initComponents();
         setResizable(false);
+    }
+    
+    public F_Menu(String nama_admin,boolean login){
+        initComponents();
+        setResizable(false);
+        label_nama.setText(nama_admin);
+        this.login = login;
     }
 
     /**
@@ -35,7 +42,7 @@ public class F_Menu extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
+        label_nama = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
@@ -55,13 +62,13 @@ public class F_Menu extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(0, 102, 102));
 
-        jLabel2.setBackground(new java.awt.Color(0, 102, 102));
-        jLabel2.setFont(new java.awt.Font("Century Gothic", 0, 11)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/boss (2).png"))); // NOI18N
-        jLabel2.setText("NAMA ADMIN");
-        jLabel2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        label_nama.setBackground(new java.awt.Color(0, 102, 102));
+        label_nama.setFont(new java.awt.Font("Century Gothic", 0, 11)); // NOI18N
+        label_nama.setForeground(new java.awt.Color(255, 255, 255));
+        label_nama.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        label_nama.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/boss (2).png"))); // NOI18N
+        label_nama.setText("NAMA ADMIN");
+        label_nama.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         jButton2.setBackground(new java.awt.Color(0, 153, 153));
         jButton2.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
@@ -91,7 +98,7 @@ public class F_Menu extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jLabel2))
+                        .addComponent(label_nama))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(36, 36, 36)
                         .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -101,7 +108,7 @@ public class F_Menu extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(label_nama, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 351, Short.MAX_VALUE)
                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(76, 76, 76))
@@ -258,7 +265,7 @@ public class F_Menu extends javax.swing.JFrame {
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
-        F_SettingForm setting = new F_SettingForm();
+        F_SettingForm setting = new F_SettingForm(true);
         setting.setVisible(true);
     }//GEN-LAST:event_jButton6ActionPerformed
 
@@ -386,8 +393,8 @@ public class F_Menu extends javax.swing.JFrame {
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JLabel label_nama;
     // End of variables declaration//GEN-END:variables
 }

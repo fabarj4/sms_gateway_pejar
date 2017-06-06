@@ -39,10 +39,11 @@ public class F_Kontak extends javax.swing.JFrame {
         kon = new koneksi();
         tabel = new DefaultTableModel();
         tbl_kontak.setModel(tabel);
-        tabel.addColumn("Id");
-        tabel.addColumn("Tipe");
+        tabel.addColumn("No");
+        tabel.addColumn("ID");
         tabel.addColumn("Nama Siswa");
         tabel.addColumn("Nomor Telepon");
+        tabel.addColumn("Tipe");
         muattabel();
         modeformkontak = 0;
         String n_id = "";
@@ -52,8 +53,22 @@ public class F_Kontak extends javax.swing.JFrame {
         try{
             Statement stasql = (Statement)kon.Connect().createStatement();
             ResultSet runkueri = stasql.executeQuery("select * from kontak;");
+            int i = 1;
+            String tipe = null;
             while (runkueri.next()) {
-                tabel.addRow(new Object[]{runkueri.getString(1), runkueri.getString(2),runkueri.getString(3),runkueri.getString(4)});
+                switch(runkueri.getString(4)){
+                    case "0":
+                        tipe = "guru";
+                        break;
+                    case "1":
+                        tipe = "siswa";
+                        break;
+                    case "2":
+                        tipe = "orang tua siswa";
+                        break;
+                }
+                tabel.addRow(new Object[]{i,runkueri.getString(1), runkueri.getString(2),runkueri.getString(3),tipe});
+                i++;
             }
             stasql.close();
          } catch(Exception t){
@@ -277,7 +292,7 @@ public class F_Kontak extends javax.swing.JFrame {
     private void btn_editrecordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_editrecordActionPerformed
         if(modeformkontak == 1){
             int row = tbl_kontak.getSelectedRow();
-            n_id = (String) tbl_kontak.getValueAt(row, 0);
+            n_id = (String) tbl_kontak.getValueAt(row, 1);
             this.setVisible(false);
             new F_Formkontak().setVisible(true);
         }
@@ -290,7 +305,7 @@ public class F_Kontak extends javax.swing.JFrame {
     private void btn_hapusrecordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_hapusrecordActionPerformed
         if(modeformkontak == 1){
             int row = tbl_kontak.getSelectedRow();
-            n_id = (String) tbl_kontak.getValueAt(row, 0);
+            n_id = (String) tbl_kontak.getValueAt(row, 1);
             try{
                 Statement stasql = (Statement)kon.Connect().createStatement(); 
                 kueri=("delete from kontak where id = '"+n_id+"';");

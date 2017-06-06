@@ -10,6 +10,11 @@
 <project name="SmsGateway2" default="default" basedir=".">
     <description>Builds, tests, and runs the project SmsGateway2.</description>
     <import file="nbproject/build-impl.xml"/>
+    <target name="-post-compile">
+        <copy file="config.properties" todir="${dist.dir}"/>        
+    </target>
+    
+    
     <!--
 
     There exist several targets which are by default empty and which can be 

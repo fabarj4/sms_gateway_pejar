@@ -49,6 +49,7 @@ public class F_Login extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         lbl_judul = new javax.swing.JLabel();
         btn_exit = new javax.swing.JButton();
+        btn_konfigurasi = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         lbl_username = new javax.swing.JLabel();
         lbl_password = new javax.swing.JLabel();
@@ -90,6 +91,27 @@ public class F_Login extends javax.swing.JFrame {
             }
         });
 
+        btn_konfigurasi.setBackground(new java.awt.Color(0, 153, 153));
+        btn_konfigurasi.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        btn_konfigurasi.setForeground(new java.awt.Color(255, 255, 255));
+        btn_konfigurasi.setText("Konfigurasi");
+        btn_konfigurasi.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        btn_konfigurasi.setContentAreaFilled(false);
+        btn_konfigurasi.setFocusPainted(false);
+        btn_konfigurasi.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btn_konfigurasiMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                btn_konfigurasiMouseReleased(evt);
+            }
+        });
+        btn_konfigurasi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_konfigurasiActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -100,7 +122,9 @@ public class F_Login extends javax.swing.JFrame {
                 .addContainerGap())
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(36, 36, 36)
-                .addComponent(btn_exit, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btn_konfigurasi, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_exit, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -109,6 +133,8 @@ public class F_Login extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(lbl_judul, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btn_konfigurasi, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btn_exit, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -258,7 +284,7 @@ public class F_Login extends javax.swing.JFrame {
                 //JOptionPane.showMessageDialog(null,"Berhasil Masuk\nSelamat Datang "+username);
 
                 //Statement setelah login berhasil
-                F_Menu utama = new F_Menu();
+                F_Menu utama = new F_Menu(userpengguna,true);
                 utama.setVisible(true);
                 dispose();
             }
@@ -331,6 +357,20 @@ public class F_Login extends javax.swing.JFrame {
         btn_login.setBackground(new java.awt.Color(0, 102, 102));
     }//GEN-LAST:event_btn_loginMouseReleased
 
+    private void btn_konfigurasiMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_konfigurasiMousePressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_konfigurasiMousePressed
+
+    private void btn_konfigurasiMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_konfigurasiMouseReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_konfigurasiMouseReleased
+
+    private void btn_konfigurasiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_konfigurasiActionPerformed
+        // TODO add your handling code here:
+        F_SettingForm setting = new F_SettingForm(false);
+        setting.setVisible(true);
+    }//GEN-LAST:event_btn_konfigurasiActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -370,6 +410,7 @@ public class F_Login extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_exit;
+    private javax.swing.JButton btn_konfigurasi;
     private javax.swing.JButton btn_login;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
