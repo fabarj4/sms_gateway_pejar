@@ -243,7 +243,6 @@ public class F_Pesan extends javax.swing.JFrame {
         table_kontak.setBackground(new java.awt.Color(153, 255, 255));
         table_kontak.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         table_kontak.setFont(new java.awt.Font("Century Gothic", 0, 11)); // NOI18N
-        table_kontak.setForeground(new java.awt.Color(204, 204, 204));
         table_kontak.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
