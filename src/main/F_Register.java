@@ -30,6 +30,7 @@ public class F_Register extends javax.swing.JFrame {
     private String userpengguna,passpengguna;
     
     public F_Register() {
+        setResizable(false);
         initComponents();
         kon = new koneksi();  
     }
@@ -273,6 +274,7 @@ public class F_Register extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void txt_usernameKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_usernameKeyTyped
@@ -306,9 +308,7 @@ public class F_Register extends javax.swing.JFrame {
     }//GEN-LAST:event_txt_confpassKeyTyped
 
     private void btn_backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_backActionPerformed
-        
-        //kembali ke halaman sebelumnya
-        
+        dispose();        
     }//GEN-LAST:event_btn_backActionPerformed
 
     private void btn_registerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_registerActionPerformed

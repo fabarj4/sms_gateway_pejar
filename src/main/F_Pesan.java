@@ -41,6 +41,7 @@ public class F_Pesan extends javax.swing.JFrame {
     private F_ProgressBar pgBar = new F_ProgressBar();
     
     public F_Pesan() {
+        setResizable(false);
         initComponents();
         try {
             getKontak();
@@ -183,7 +184,7 @@ public class F_Pesan extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        cmbBox_Tipe = new javax.swing.JComboBox<String>();
+        cmbBox_Tipe = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         in_search = new javax.swing.JTextField();
@@ -202,7 +203,7 @@ public class F_Pesan extends javax.swing.JFrame {
         cmbBox_Tipe.setBackground(new java.awt.Color(102, 102, 102));
         cmbBox_Tipe.setFont(new java.awt.Font("Century Gothic", 0, 11)); // NOI18N
         cmbBox_Tipe.setForeground(new java.awt.Color(0, 51, 51));
-        cmbBox_Tipe.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Semua", "Guru", "Siswa", "Orang Tua Siswa" }));
+        cmbBox_Tipe.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Semua", "Guru", "Siswa", "Orang Tua Siswa" }));
         cmbBox_Tipe.setBorder(null);
 
         jLabel3.setBackground(new java.awt.Color(255, 255, 255));
@@ -338,6 +339,7 @@ public class F_Pesan extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void in_searchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_in_searchActionPerformed

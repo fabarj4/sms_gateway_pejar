@@ -15,6 +15,7 @@ public class F_ListKontak extends javax.swing.JFrame {
      * Creates new form F_ListKontak
      */
     public F_ListKontak() {
+        setResizable(false);
         initComponents();
     }
 

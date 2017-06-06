@@ -24,6 +24,7 @@ public class F_SettingForm extends javax.swing.JFrame {
      * Creates new form F_SettingForm
      */
     public F_SettingForm() {
+        setResizable(false);
         initComponents();
         try {
             getAllConfig();
@@ -45,7 +46,7 @@ public class F_SettingForm extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         txt_port_database = new javax.swing.JTextField();
-        cmb_port_modem = new javax.swing.JComboBox<String>();
+        cmb_port_modem = new javax.swing.JComboBox<>();
         jButton1 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         txt_hp_server = new javax.swing.JTextField();
@@ -257,6 +258,7 @@ public class F_SettingForm extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void txt_hostActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_hostActionPerformed

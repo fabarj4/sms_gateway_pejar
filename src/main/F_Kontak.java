@@ -5,7 +5,6 @@
  */
 package main;
 
-import com.harshadura.gsm.smsdura.GsmModem;
 import java.sql.Connection;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -36,6 +35,7 @@ public class F_Kontak extends javax.swing.JFrame {
     
     public F_Kontak() {
         initComponents();
+        setResizable(false);
         kon = new koneksi();
         tabel = new DefaultTableModel();
         tbl_kontak.setModel(tabel);
@@ -78,7 +78,7 @@ public class F_Kontak extends javax.swing.JFrame {
         btn_hapusrecord = new javax.swing.JButton();
         btn_kembali = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
 
         tbl_kontak.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
@@ -167,6 +167,7 @@ public class F_Kontak extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_tambahrecordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_tambahrecordActionPerformed

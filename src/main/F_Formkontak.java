@@ -5,7 +5,6 @@
  */
 package main;
 
-import com.harshadura.gsm.smsdura.GsmModem;
 import java.sql.Connection;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -36,6 +35,7 @@ public class F_Formkontak extends javax.swing.JFrame {
     public F_Formkontak() {
         initComponents();
         groupButton();
+        setResizable(false);
         kon = new koneksi();
         if(F_Kontak.modeformkontak == 1){
             try{
@@ -91,7 +91,7 @@ public class F_Formkontak extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
 
         lbl_judul.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
@@ -218,6 +218,7 @@ public class F_Formkontak extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_kembaliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_kembaliActionPerformed

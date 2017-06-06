@@ -1,8 +1,52 @@
-TUGAS PEJAR 4IA01
+# JDK java yang digunakan : 
+  - Java JDK 32 Bit x86
 
-Membuat SMS GATEWAY
-- Budhi Utama Ganda Pamungkas
-- Cahyaning Ayu Pratiwi
-- Faisal Akbar
-- Nabilah 
+# library yang digunakan :
+  - MySQL JDBC Driver
+  - smslib-3.5.3
+  - log4j-1.2.16
 
+# Konfigurasi SMSLib :
+terdapat 3 file dalam folder library
+  1. comm.jar
+  2. win32com.dll
+  3. javax.com.properties
+ 
+
+Langkat 1: Copy comm.jar ke
+```sh
+- %JAVA_HOME%/lib  
+  [contoh C:\Program Files\Java\jdk1.7.0_03\lib ]
+- %JAVA_HOME%/jre/lib/ext
+  [ contoh C:\Program Files\Java\jdk1.7.0_03\jre\lib\ext ]
+```
+
+Langkat 2: Copy win32com.dll ke
+```sh
+- %JAVA_HOME%/bin
+  [contoh C:\Program Files\ Java\jdk1.7.0_03\bin ]
+- %JAVA_HOME%/jre/bin
+  [contoh C:\Program Files\ Java\jdk1.7.0_03\jre\bin ]
+- %windir%System32
+  [contoh C:\Windows\System32 ] 
+```
+
+Langkat 3: Copy javax.comm.properties to
+```sh
+- %JAVA_HOME%/lib
+  [contoh C:\Program Files\ Java\jdk1.7.0_03\lib ]
+- %JAVA_HOME%/jre/lib
+  [contoh C:\Program Files\Java\jdk1.7.0_03\jre\lib ]
+```
+
+
+### Kelas 4IA01 :
+
+| Nama | NIM |
+| ------ | ------ |
+| Budhi Utama Ganda Pamungkas | 51413799 |
+| Cahyaning Ayu Pertiwi  | 51413720 |
+| Faisal Akbar | 53413109 |
+| Nabilah |   |
+
+**Pengajar : Sunarko**
