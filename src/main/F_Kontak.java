@@ -4,47 +4,63 @@
  * and open the template in the editor.
  */
 package main;
+
+import com.harshadura.gsm.smsdura.GsmModem;
+import java.sql.Connection;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import lib.koneksi;
+
+import javax.swing.JOptionPane;
+import java.awt.event.KeyEvent;
+import java.sql.ResultSet;
+import java.sql.Statement;
+
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
- * @author HP
+ * @author Ganda
  */
-import java.awt.HeadlessException;
-import java.sql.Connection;
-import java.sql.SQLException;
-import javax.swing.JOptionPane;
-import net.proteanit.sql.DbUtils;
-
 public class F_Kontak extends javax.swing.JFrame {
 
     /**
      * Creates new form F_Kontak
      */
+    private koneksi kon;
+    private DefaultTableModel tabel;
+    private String kueri;
+    private int modekliktabel;
+    public static int modeformkontak;
+    public static String n_id;
+    
     public F_Kontak() {
         initComponents();
+        kon = new koneksi();
+        tabel = new DefaultTableModel();
+        tbl_kontak.setModel(tabel);
+        tabel.addColumn("Id");
+        tabel.addColumn("Tipe");
+        tabel.addColumn("Nama Siswa");
+        tabel.addColumn("Nomor Telepon");
+        muattabel();
+        modeformkontak = 0;
+        String n_id = "";
     }
-
     
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
-    databaru=true;
-    // mengosongkan textbox
-    jTextField1.setText("");
-    jTextField2.setText("");
-    jTextField3.setText("");
-    jTextField4.setText("");
-    jTextField5.setText("");
-    jTextField6.setText("");
-}
+    public void muattabel(){
+        try{
+            Statement stasql = (Statement)kon.Connect().createStatement();
+            ResultSet runkueri = stasql.executeQuery("select * from kontak;");
+            while (runkueri.next()) {
+                tabel.addRow(new Object[]{runkueri.getString(1), runkueri.getString(2),runkueri.getString(3),runkueri.getString(4)});
+            }
+            stasql.close();
+         } catch(Exception t){
+            JOptionPane.showMessageDialog(null,"Terdapat Kesalahan");
+         }
+    }
     
-    private void GetData(){ // menampilkan data dari database
-    try {
-        Connection conn =(Connection)delta.koneksi.koneksiDB();
-        java.sql.Statement stm = conn.createStatement();
-        java.sql.ResultSet sql = stm.executeQuery("select * from karyawan");
-        jTable1.setModel(DbUtils.resultSetToTableModel(sql));
-    }
-    catch (SQLException | HeadlessException e) {
-    }
-}
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -54,187 +70,142 @@ public class F_Kontak extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel2 = new javax.swing.JPanel();
-        btnback1 = new javax.swing.JButton();
-        jPanel3 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        nama = new javax.swing.JLabel();
-        tnama = new javax.swing.JTextField();
-        notel = new javax.swing.JLabel();
-        tnotel = new javax.swing.JTextField();
-        status = new javax.swing.JLabel();
-        cstatus = new javax.swing.JComboBox();
-        btnsave = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tbl_kontak = new javax.swing.JTable();
+        lbl_judul = new javax.swing.JLabel();
+        btn_tambahrecord = new javax.swing.JButton();
+        btn_editrecord = new javax.swing.JButton();
+        btn_hapusrecord = new javax.swing.JButton();
+        btn_kembali = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
-        jPanel2.setBackground(new java.awt.Color(0, 102, 102));
-
-        btnback1.setBackground(new java.awt.Color(0, 204, 204));
-        btnback1.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        btnback1.setForeground(new java.awt.Color(255, 255, 255));
-        btnback1.setText("BACK");
-        btnback1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        btnback1.setContentAreaFilled(false);
-        btnback1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                btnback1MousePressed(evt);
+        tbl_kontak.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        tbl_kontak.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
             }
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                btnback1MouseReleased(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(36, 36, 36)
-                .addComponent(btnback1, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(40, Short.MAX_VALUE))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnback1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(36, 36, 36))
-        );
-
-        jPanel3.setBackground(new java.awt.Color(0, 51, 51));
-
-        jLabel1.setFont(new java.awt.Font("Century Gothic", 0, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Kontak");
-
-        nama.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
-        nama.setForeground(new java.awt.Color(255, 255, 255));
-        nama.setText("Nama");
-
-        tnama.setBackground(new java.awt.Color(0, 51, 51));
-        tnama.setFont(new java.awt.Font("Century Gothic", 0, 11)); // NOI18N
-
-        notel.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
-        notel.setForeground(new java.awt.Color(255, 255, 255));
-        notel.setText("No. Telepon");
-
-        tnotel.setBackground(new java.awt.Color(0, 51, 51));
-        tnotel.setFont(new java.awt.Font("Century Gothic", 0, 11)); // NOI18N
-
-        status.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
-        status.setForeground(new java.awt.Color(255, 255, 255));
-        status.setText("Status");
-
-        cstatus.setBackground(new java.awt.Color(0, 51, 51));
-        cstatus.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "--- Choose One ---", "Guru", "Siswa", "Orang Tua Siswa", " ", " " }));
-
-        btnsave.setBackground(new java.awt.Color(0, 204, 204));
-        btnsave.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        btnsave.setForeground(new java.awt.Color(255, 255, 255));
-        btnsave.setText("SAVE");
-        btnsave.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        btnsave.setContentAreaFilled(false);
-        btnsave.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                btnsaveMousePressed(evt);
-            }
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                btnsaveMouseReleased(evt);
+        ));
+        tbl_kontak.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbl_kontakMouseClicked(evt);
             }
         });
-        btnsave.addActionListener(new java.awt.event.ActionListener() {
+        jScrollPane1.setViewportView(tbl_kontak);
+
+        lbl_judul.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
+        lbl_judul.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl_judul.setText("KONTAK");
+
+        btn_tambahrecord.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        btn_tambahrecord.setText("Tambah Record");
+        btn_tambahrecord.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnsaveActionPerformed(evt);
+                btn_tambahrecordActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(56, 56, 56)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(nama)
-                            .addComponent(notel)
-                            .addComponent(status))
-                        .addGap(45, 45, 45)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(cstatus, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tnotel, javax.swing.GroupLayout.DEFAULT_SIZE, 319, Short.MAX_VALUE)
-                            .addComponent(tnama)))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(254, 254, 254)
-                        .addComponent(jLabel1))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(btnsave, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(94, Short.MAX_VALUE))
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addComponent(jLabel1)
-                .addGap(58, 58, 58)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(nama)
-                    .addComponent(tnama, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(33, 33, 33)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tnotel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(notel))
-                .addGap(27, 27, 27)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cstatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(status))
-                .addGap(38, 38, 38)
-                .addComponent(btnsave, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(106, Short.MAX_VALUE))
-        );
+        btn_editrecord.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        btn_editrecord.setText("Edit Record");
+        btn_editrecord.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_editrecordActionPerformed(evt);
+            }
+        });
+
+        btn_hapusrecord.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        btn_hapusrecord.setText("Hapus Record");
+        btn_hapusrecord.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_hapusrecordActionPerformed(evt);
+            }
+        });
+
+        btn_kembali.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        btn_kembali.setText("Kembali");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(50, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 415, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btn_editrecord, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btn_tambahrecord, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btn_hapusrecord, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btn_kembali, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(50, 50, 50))
+            .addComponent(lbl_judul, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(50, 50, 50)
+                .addComponent(lbl_judul)
+                .addGap(50, 50, 50)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btn_tambahrecord)
+                        .addGap(42, 42, 42)
+                        .addComponent(btn_editrecord)
+                        .addGap(50, 50, 50)
+                        .addComponent(btn_hapusrecord)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btn_kembali))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(79, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnsaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsaveActionPerformed
-      
-    }//GEN-LAST:event_btnsaveActionPerformed
+    private void btn_tambahrecordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_tambahrecordActionPerformed
+        modeformkontak = 0;
+        this.setVisible(false);
+        new F_Formkontak().setVisible(true);
+    }//GEN-LAST:event_btn_tambahrecordActionPerformed
 
-    private void btnback1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnback1MousePressed
-        btnback1.setBackground(new java.awt.Color(0, 51, 102));
-    }//GEN-LAST:event_btnback1MousePressed
+    private void btn_editrecordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_editrecordActionPerformed
+        if(modeformkontak == 1){
+            int row = tbl_kontak.getSelectedRow();
+            n_id = (String) tbl_kontak.getValueAt(row, 0);
+            this.setVisible(false);
+            new F_Formkontak().setVisible(true);
+        }
+    }//GEN-LAST:event_btn_editrecordActionPerformed
 
-    private void btnsaveMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnsaveMousePressed
-        btnsave.setBackground(new java.awt.Color(0, 51, 102));
-    }//GEN-LAST:event_btnsaveMousePressed
+    private void tbl_kontakMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_kontakMouseClicked
+        modeformkontak = 1;
+    }//GEN-LAST:event_tbl_kontakMouseClicked
 
-    private void btnback1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnback1MouseReleased
-        btnback1.setBackground(new java.awt.Color(0, 102, 102));
-    }//GEN-LAST:event_btnback1MouseReleased
-
-    private void btnsaveMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnsaveMouseReleased
-        btnsave.setBackground(new java.awt.Color(0, 102, 102));
-    }//GEN-LAST:event_btnsaveMouseReleased
-
+    private void btn_hapusrecordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_hapusrecordActionPerformed
+        if(modeformkontak == 1){
+            int row = tbl_kontak.getSelectedRow();
+            n_id = (String) tbl_kontak.getValueAt(row, 0);
+            try{
+                Statement stasql = (Statement)kon.Connect().createStatement(); 
+                kueri=("delete from kontak where id = '"+n_id+"';");
+                stasql.executeUpdate(kueri);
+                stasql.close();
+                JOptionPane.showMessageDialog(null,"Record Telah Dihapus");
+                this.setVisible(false);
+                new F_Kontak().setVisible(true);
+            } catch(Exception t){
+                JOptionPane.showMessageDialog(null,"Record Gagal Dihapus\nTerdapat Kesalahan Pada Program");
+            }
+        }
+    }//GEN-LAST:event_btn_hapusrecordActionPerformed
+    
     /**
      * @param args the command line arguments
      */
@@ -271,16 +242,12 @@ public class F_Kontak extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnback1;
-    private javax.swing.JButton btnsave;
-    private javax.swing.JComboBox cstatus;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JLabel nama;
-    private javax.swing.JLabel notel;
-    private javax.swing.JLabel status;
-    private javax.swing.JTextField tnama;
-    private javax.swing.JTextField tnotel;
+    private javax.swing.JButton btn_editrecord;
+    private javax.swing.JButton btn_hapusrecord;
+    private javax.swing.JButton btn_kembali;
+    private javax.swing.JButton btn_tambahrecord;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lbl_judul;
+    private javax.swing.JTable tbl_kontak;
     // End of variables declaration//GEN-END:variables
 }
