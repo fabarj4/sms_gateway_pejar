@@ -62,6 +62,14 @@ public class F_Menu extends javax.swing.JFrame {
         jButton2.setText("LOGOUT");
         jButton2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jButton2.setContentAreaFilled(false);
+        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jButton2MousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jButton2MouseReleased(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -95,6 +103,14 @@ public class F_Menu extends javax.swing.JFrame {
         jButton1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jButton1.setContentAreaFilled(false);
         jButton1.setFocusable(false);
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jButton1MousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jButton1MouseReleased(evt);
+            }
+        });
 
         jButton7.setBackground(new java.awt.Color(0, 204, 204));
         jButton7.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
@@ -104,6 +120,14 @@ public class F_Menu extends javax.swing.JFrame {
         jButton7.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jButton7.setContentAreaFilled(false);
         jButton7.setFocusable(false);
+        jButton7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jButton7MousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jButton7MouseReleased(evt);
+            }
+        });
         jButton7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton7ActionPerformed(evt);
@@ -118,6 +142,14 @@ public class F_Menu extends javax.swing.JFrame {
         jButton5.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jButton5.setContentAreaFilled(false);
         jButton5.setFocusable(false);
+        jButton5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jButton5MousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jButton5MouseReleased(evt);
+            }
+        });
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton5ActionPerformed(evt);
@@ -132,6 +164,14 @@ public class F_Menu extends javax.swing.JFrame {
         jButton6.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jButton6.setContentAreaFilled(false);
         jButton6.setFocusable(false);
+        jButton6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jButton6MousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jButton6MouseReleased(evt);
+            }
+        });
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton6ActionPerformed(evt);
@@ -213,6 +253,46 @@ public class F_Menu extends javax.swing.JFrame {
         F_Register register = new F_Register();
         register.setVisible(true);
     }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MousePressed
+        jButton2.setBackground(new java.awt.Color(0, 51, 102));
+    }//GEN-LAST:event_jButton2MousePressed
+
+    private void jButton1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MousePressed
+        jButton1.setBackground(new java.awt.Color(0, 51, 102));
+    }//GEN-LAST:event_jButton1MousePressed
+
+    private void jButton7MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton7MousePressed
+        jButton7.setBackground(new java.awt.Color(0, 51, 102));
+    }//GEN-LAST:event_jButton7MousePressed
+
+    private void jButton5MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton5MousePressed
+        jButton5.setBackground(new java.awt.Color(0, 51, 102));
+    }//GEN-LAST:event_jButton5MousePressed
+
+    private void jButton6MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton6MousePressed
+        jButton6.setBackground(new java.awt.Color(0, 51, 102));
+    }//GEN-LAST:event_jButton6MousePressed
+
+    private void jButton2MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseReleased
+        jButton2.setBackground(new java.awt.Color(0, 102, 102));
+    }//GEN-LAST:event_jButton2MouseReleased
+
+    private void jButton1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseReleased
+        jButton1.setBackground(new java.awt.Color(0, 102, 102));
+    }//GEN-LAST:event_jButton1MouseReleased
+
+    private void jButton7MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton7MouseReleased
+        jButton7.setBackground(new java.awt.Color(0, 102, 102));
+    }//GEN-LAST:event_jButton7MouseReleased
+
+    private void jButton5MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton5MouseReleased
+        jButton5.setBackground(new java.awt.Color(0, 102, 102));
+    }//GEN-LAST:event_jButton5MouseReleased
+
+    private void jButton6MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton6MouseReleased
+        jButton6.setBackground(new java.awt.Color(0, 102, 102));
+    }//GEN-LAST:event_jButton6MouseReleased
 
     /**
      * @param args the command line arguments

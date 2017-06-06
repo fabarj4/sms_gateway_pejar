@@ -48,6 +48,14 @@ public class F_ListKontak extends javax.swing.JFrame {
         btnback2.setText("BACK");
         btnback2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         btnback2.setContentAreaFilled(false);
+        btnback2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btnback2MousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                btnback2MouseReleased(evt);
+            }
+        });
         btnback2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnback2ActionPerformed(evt);
@@ -98,6 +106,14 @@ public class F_ListKontak extends javax.swing.JFrame {
         btnadd.setText("ADD");
         btnadd.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         btnadd.setContentAreaFilled(false);
+        btnadd.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btnaddMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                btnaddMouseReleased(evt);
+            }
+        });
         btnadd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnaddActionPerformed(evt);
@@ -110,6 +126,14 @@ public class F_ListKontak extends javax.swing.JFrame {
         btnedit.setText("EDIT");
         btnedit.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         btnedit.setContentAreaFilled(false);
+        btnedit.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btneditMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                btneditMouseReleased(evt);
+            }
+        });
         btnedit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btneditActionPerformed(evt);
@@ -122,6 +146,14 @@ public class F_ListKontak extends javax.swing.JFrame {
         btndel.setText("DELETE");
         btndel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         btndel.setContentAreaFilled(false);
+        btndel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btndelMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                btndelMouseReleased(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -188,6 +220,38 @@ public class F_ListKontak extends javax.swing.JFrame {
     private void btnback2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnback2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnback2ActionPerformed
+
+    private void btnback2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnback2MousePressed
+        btnback2.setBackground(new java.awt.Color(0, 51, 102));
+    }//GEN-LAST:event_btnback2MousePressed
+
+    private void btnaddMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnaddMousePressed
+        btnadd.setBackground(new java.awt.Color(0, 51, 102));
+    }//GEN-LAST:event_btnaddMousePressed
+
+    private void btneditMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btneditMousePressed
+        btnedit.setBackground(new java.awt.Color(0, 51, 102));
+    }//GEN-LAST:event_btneditMousePressed
+
+    private void btndelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btndelMousePressed
+        btndel.setBackground(new java.awt.Color(0, 51, 102));
+    }//GEN-LAST:event_btndelMousePressed
+
+    private void btnback2MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnback2MouseReleased
+        btnback2.setBackground(new java.awt.Color(0, 102, 102));
+    }//GEN-LAST:event_btnback2MouseReleased
+
+    private void btnaddMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnaddMouseReleased
+        btnadd.setBackground(new java.awt.Color(0, 102, 102));
+    }//GEN-LAST:event_btnaddMouseReleased
+
+    private void btneditMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btneditMouseReleased
+        btnedit.setBackground(new java.awt.Color(0, 102, 102));
+    }//GEN-LAST:event_btneditMouseReleased
+
+    private void btndelMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btndelMouseReleased
+        btndel.setBackground(new java.awt.Color(0, 102, 102));
+    }//GEN-LAST:event_btndelMouseReleased
 
     /**
      * @param args the command line arguments

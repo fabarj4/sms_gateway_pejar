@@ -74,6 +74,14 @@ public class F_Login extends javax.swing.JFrame {
         btn_exit.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         btn_exit.setContentAreaFilled(false);
         btn_exit.setFocusPainted(false);
+        btn_exit.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btn_exitMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                btn_exitMouseReleased(evt);
+            }
+        });
         btn_exit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_exitActionPerformed(evt);
@@ -149,6 +157,14 @@ public class F_Login extends javax.swing.JFrame {
         btn_login.setText("LOGIN");
         btn_login.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         btn_login.setContentAreaFilled(false);
+        btn_login.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btn_loginMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                btn_loginMouseReleased(evt);
+            }
+        });
         btn_login.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_loginActionPerformed(evt);
@@ -295,6 +311,22 @@ public class F_Login extends javax.swing.JFrame {
     private void txt_passwordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_passwordActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_passwordActionPerformed
+
+    private void btn_exitMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_exitMousePressed
+       btn_exit.setBackground(new java.awt.Color(0, 51, 102));
+    }//GEN-LAST:event_btn_exitMousePressed
+
+    private void btn_loginMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_loginMousePressed
+        btn_login.setBackground(new java.awt.Color(0, 51, 102));
+    }//GEN-LAST:event_btn_loginMousePressed
+
+    private void btn_exitMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_exitMouseReleased
+        btn_exit.setBackground(new java.awt.Color(0, 102, 102));
+    }//GEN-LAST:event_btn_exitMouseReleased
+
+    private void btn_loginMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_loginMouseReleased
+        btn_login.setBackground(new java.awt.Color(0, 102, 102));
+    }//GEN-LAST:event_btn_loginMouseReleased
 
     /**
      * @param args the command line arguments

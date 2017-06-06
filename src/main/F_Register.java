@@ -78,6 +78,14 @@ public class F_Register extends javax.swing.JFrame {
         btn_back.setText("BACK");
         btn_back.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         btn_back.setContentAreaFilled(false);
+        btn_back.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btn_backMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                btn_backMouseReleased(evt);
+            }
+        });
         btn_back.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_backActionPerformed(evt);
@@ -149,6 +157,14 @@ public class F_Register extends javax.swing.JFrame {
         btn_register.setText("REGISTER");
         btn_register.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         btn_register.setContentAreaFilled(false);
+        btn_register.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btn_registerMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                btn_registerMouseReleased(evt);
+            }
+        });
         btn_register.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_registerActionPerformed(evt);
@@ -212,9 +228,9 @@ public class F_Register extends javax.swing.JFrame {
                 .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lbl_txt_confpass)
-                .addGap(43, 43, 43)
-                .addComponent(btn_register, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                .addComponent(btn_register, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(19, 19, 19))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -253,7 +269,7 @@ public class F_Register extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 446, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -324,6 +340,22 @@ public class F_Register extends javax.swing.JFrame {
             btn_registerActionPerformed(null);
         }
     }//GEN-LAST:event_txt_confpassKeyPressed
+
+    private void btn_backMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_backMousePressed
+        btn_back.setBackground(new java.awt.Color(0, 51, 102));
+    }//GEN-LAST:event_btn_backMousePressed
+
+    private void btn_registerMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_registerMouseReleased
+        btn_register.setBackground(new java.awt.Color(0, 102, 102));
+    }//GEN-LAST:event_btn_registerMouseReleased
+
+    private void btn_registerMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_registerMousePressed
+        btn_register.setBackground(new java.awt.Color(0, 51, 102));
+    }//GEN-LAST:event_btn_registerMousePressed
+
+    private void btn_backMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_backMouseReleased
+        btn_back.setBackground(new java.awt.Color(0, 51, 102));
+    }//GEN-LAST:event_btn_backMouseReleased
 
     /**
      * @param args the command line arguments

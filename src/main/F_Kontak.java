@@ -76,6 +76,14 @@ public class F_Kontak extends javax.swing.JFrame {
         btnback1.setText("BACK");
         btnback1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         btnback1.setContentAreaFilled(false);
+        btnback1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btnback1MousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                btnback1MouseReleased(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -127,6 +135,14 @@ public class F_Kontak extends javax.swing.JFrame {
         btnsave.setText("SAVE");
         btnsave.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         btnsave.setContentAreaFilled(false);
+        btnsave.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btnsaveMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                btnsaveMouseReleased(evt);
+            }
+        });
         btnsave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnsaveActionPerformed(evt);
@@ -202,6 +218,22 @@ public class F_Kontak extends javax.swing.JFrame {
     private void btnsaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsaveActionPerformed
       
     }//GEN-LAST:event_btnsaveActionPerformed
+
+    private void btnback1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnback1MousePressed
+        btnback1.setBackground(new java.awt.Color(0, 51, 102));
+    }//GEN-LAST:event_btnback1MousePressed
+
+    private void btnsaveMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnsaveMousePressed
+        btnsave.setBackground(new java.awt.Color(0, 51, 102));
+    }//GEN-LAST:event_btnsaveMousePressed
+
+    private void btnback1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnback1MouseReleased
+        btnback1.setBackground(new java.awt.Color(0, 102, 102));
+    }//GEN-LAST:event_btnback1MouseReleased
+
+    private void btnsaveMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnsaveMouseReleased
+        btnsave.setBackground(new java.awt.Color(0, 102, 102));
+    }//GEN-LAST:event_btnsaveMouseReleased
 
     /**
      * @param args the command line arguments
