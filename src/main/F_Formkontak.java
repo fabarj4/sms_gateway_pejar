@@ -124,7 +124,7 @@ public class F_Formkontak extends javax.swing.JFrame {
 
         jLabel3.setFont(new java.awt.Font("Century Gothic", 1, 36)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("ADD");
+        jLabel3.setText("FORM");
 
         jPanel2.setBackground(new java.awt.Color(0, 51, 51));
 
