@@ -46,7 +46,6 @@ public class F_Register extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         lbl_judul = new javax.swing.JLabel();
-        btn_back = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         lbl_username = new javax.swing.JLabel();
         txt_username = new javax.swing.JTextField();
@@ -61,6 +60,7 @@ public class F_Register extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator3 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
+        btn_back = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setLocationByPlatform(true);
@@ -72,26 +72,6 @@ public class F_Register extends javax.swing.JFrame {
         lbl_judul.setForeground(new java.awt.Color(255, 255, 255));
         lbl_judul.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbl_judul.setText("REGISTER");
-
-        btn_back.setBackground(new java.awt.Color(0, 204, 204));
-        btn_back.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
-        btn_back.setForeground(new java.awt.Color(255, 255, 255));
-        btn_back.setText("BACK");
-        btn_back.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        btn_back.setContentAreaFilled(false);
-        btn_back.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                btn_backMousePressed(evt);
-            }
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                btn_backMouseReleased(evt);
-            }
-        });
-        btn_back.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_backActionPerformed(evt);
-            }
-        });
 
         jPanel2.setBackground(new java.awt.Color(0, 51, 51));
 
@@ -111,7 +91,7 @@ public class F_Register extends javax.swing.JFrame {
 
         lbl_txt_username.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         lbl_txt_username.setForeground(new java.awt.Color(204, 204, 204));
-        lbl_txt_username.setText("*Maksimal 20 Karakter*");
+        lbl_txt_username.setText("*Maximal 20 Characters*");
 
         lbl_password.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
         lbl_password.setForeground(new java.awt.Color(255, 255, 255));
@@ -129,7 +109,7 @@ public class F_Register extends javax.swing.JFrame {
 
         lbl_txt_password.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         lbl_txt_password.setForeground(new java.awt.Color(204, 204, 204));
-        lbl_txt_password.setText("*Maksimal 16 Karakter*");
+        lbl_txt_password.setText("*Maximal 16 Characters*");
 
         lbl_confpass.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
         lbl_confpass.setForeground(new java.awt.Color(255, 255, 255));
@@ -150,7 +130,7 @@ public class F_Register extends javax.swing.JFrame {
 
         lbl_txt_confpass.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         lbl_txt_confpass.setForeground(new java.awt.Color(204, 204, 204));
-        lbl_txt_confpass.setText("*Maksimal 16 Karakter*");
+        lbl_txt_confpass.setText("*Maximal 16 Characters*");
 
         btn_register.setBackground(new java.awt.Color(0, 204, 204));
         btn_register.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
@@ -182,7 +162,6 @@ public class F_Register extends javax.swing.JFrame {
                     .addComponent(jSeparator3)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(lbl_txt_password)
-                        .addComponent(lbl_txt_username, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jSeparator2)
                             .addComponent(lbl_txt_confpass, javax.swing.GroupLayout.Alignment.TRAILING)
@@ -195,12 +174,13 @@ public class F_Register extends javax.swing.JFrame {
                                     .addComponent(lbl_password, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(lbl_username, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(lbl_confpass))
-                                .addGap(202, 202, 202)))))
-                .addContainerGap(127, Short.MAX_VALUE))
+                                .addGap(202, 202, 202)))
+                        .addComponent(lbl_txt_username)))
+                .addContainerGap(161, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btn_register, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(23, 23, 23))
+                .addGap(52, 52, 52))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -229,10 +209,30 @@ public class F_Register extends javax.swing.JFrame {
                 .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lbl_txt_confpass)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
+                .addGap(32, 32, 32)
                 .addComponent(btn_register, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(36, 36, 36))
+                .addContainerGap(35, Short.MAX_VALUE))
         );
+
+        btn_back.setBackground(new java.awt.Color(0, 204, 204));
+        btn_back.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        btn_back.setForeground(new java.awt.Color(255, 255, 255));
+        btn_back.setText("BACK");
+        btn_back.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        btn_back.setContentAreaFilled(false);
+        btn_back.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btn_backMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                btn_backMouseReleased(evt);
+            }
+        });
+        btn_back.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_backActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -244,19 +244,19 @@ public class F_Register extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(lbl_judul, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(48, 48, 48)
-                        .addComponent(btn_back, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(49, 49, 49)
+                        .addComponent(btn_back, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(22, 22, 22)
+                .addContainerGap()
                 .addComponent(lbl_judul)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btn_back, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29))
+                .addComponent(btn_back, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
@@ -264,7 +264,9 @@ public class F_Register extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
