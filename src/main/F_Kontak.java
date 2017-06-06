@@ -70,17 +70,113 @@ public class F_Kontak extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tbl_kontak = new javax.swing.JTable();
+        jPanel1 = new javax.swing.JPanel();
+        btn_kembali = new javax.swing.JButton();
         lbl_judul = new javax.swing.JLabel();
-        btn_tambahrecord = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
         btn_editrecord = new javax.swing.JButton();
         btn_hapusrecord = new javax.swing.JButton();
-        btn_kembali = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tbl_kontak = new javax.swing.JTable();
+        btn_tambahrecord = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
 
+        jPanel1.setBackground(new java.awt.Color(0, 102, 102));
+
+        btn_kembali.setBackground(new java.awt.Color(0, 204, 204));
+        btn_kembali.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        btn_kembali.setForeground(new java.awt.Color(255, 255, 255));
+        btn_kembali.setText("BACK");
+        btn_kembali.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        btn_kembali.setContentAreaFilled(false);
+        btn_kembali.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btn_kembaliMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                btn_kembaliMouseReleased(evt);
+            }
+        });
+        btn_kembali.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_kembaliActionPerformed(evt);
+            }
+        });
+
+        lbl_judul.setFont(new java.awt.Font("Century Gothic", 0, 26)); // NOI18N
+        lbl_judul.setForeground(new java.awt.Color(255, 255, 255));
+        lbl_judul.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl_judul.setText("KONTAK");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(lbl_judul, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(32, 32, 32)
+                        .addComponent(btn_kembali, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(22, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lbl_judul)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btn_kembali, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(31, 31, 31))
+        );
+
+        jPanel2.setBackground(new java.awt.Color(0, 51, 51));
+
+        btn_editrecord.setBackground(new java.awt.Color(0, 204, 204));
+        btn_editrecord.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        btn_editrecord.setForeground(new java.awt.Color(255, 255, 255));
+        btn_editrecord.setText("EDIT");
+        btn_editrecord.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        btn_editrecord.setContentAreaFilled(false);
+        btn_editrecord.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btn_editrecordMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                btn_editrecordMouseReleased(evt);
+            }
+        });
+        btn_editrecord.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_editrecordActionPerformed(evt);
+            }
+        });
+
+        btn_hapusrecord.setBackground(new java.awt.Color(0, 204, 204));
+        btn_hapusrecord.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        btn_hapusrecord.setForeground(new java.awt.Color(255, 255, 255));
+        btn_hapusrecord.setText("DELETE");
+        btn_hapusrecord.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        btn_hapusrecord.setContentAreaFilled(false);
+        btn_hapusrecord.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btn_hapusrecordMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                btn_hapusrecordMouseReleased(evt);
+            }
+        });
+        btn_hapusrecord.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_hapusrecordActionPerformed(evt);
+            }
+        });
+
+        tbl_kontak.setBackground(new java.awt.Color(0, 204, 204));
         tbl_kontak.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         tbl_kontak.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -100,75 +196,72 @@ public class F_Kontak extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tbl_kontak);
 
-        lbl_judul.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
-        lbl_judul.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl_judul.setText("KONTAK");
-
-        btn_tambahrecord.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
-        btn_tambahrecord.setText("Tambah Record");
+        btn_tambahrecord.setBackground(new java.awt.Color(0, 204, 204));
+        btn_tambahrecord.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        btn_tambahrecord.setForeground(new java.awt.Color(255, 255, 255));
+        btn_tambahrecord.setText("ADD");
+        btn_tambahrecord.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        btn_tambahrecord.setContentAreaFilled(false);
+        btn_tambahrecord.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btn_tambahrecordMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                btn_tambahrecordMouseReleased(evt);
+            }
+        });
         btn_tambahrecord.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_tambahrecordActionPerformed(evt);
             }
         });
 
-        btn_editrecord.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
-        btn_editrecord.setText("Edit Record");
-        btn_editrecord.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_editrecordActionPerformed(evt);
-            }
-        });
-
-        btn_hapusrecord.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
-        btn_hapusrecord.setText("Hapus Record");
-        btn_hapusrecord.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_hapusrecordActionPerformed(evt);
-            }
-        });
-
-        btn_kembali.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
-        btn_kembali.setText("Kembali");
-        btn_kembali.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_kembaliActionPerformed(evt);
-            }
-        });
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 426, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(172, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btn_hapusrecord, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_editrecord, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_tambahrecord, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(53, 53, 53))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addGap(61, 61, 61)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btn_tambahrecord, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btn_editrecord, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btn_hapusrecord, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(16, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(50, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 415, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btn_editrecord, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btn_tambahrecord, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btn_hapusrecord, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btn_kembali, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(50, 50, 50))
-            .addComponent(lbl_judul, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(50, 50, 50)
-                .addComponent(lbl_judul)
-                .addGap(50, 50, 50)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btn_tambahrecord)
-                        .addGap(42, 42, 42)
-                        .addComponent(btn_editrecord)
-                        .addGap(50, 50, 50)
-                        .addComponent(btn_hapusrecord)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btn_kembali))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(79, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -216,6 +309,38 @@ public class F_Kontak extends javax.swing.JFrame {
         // TODO add your handling code here:
         dispose();
     }//GEN-LAST:event_btn_kembaliActionPerformed
+
+    private void btn_kembaliMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_kembaliMousePressed
+        btn_kembali.setBackground(new java.awt.Color(0, 51, 102));
+    }//GEN-LAST:event_btn_kembaliMousePressed
+
+    private void btn_tambahrecordMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_tambahrecordMousePressed
+        btn_tambahrecord.setBackground(new java.awt.Color(0, 51, 102));
+    }//GEN-LAST:event_btn_tambahrecordMousePressed
+
+    private void btn_editrecordMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_editrecordMousePressed
+        btn_editrecord.setBackground(new java.awt.Color(0, 51, 102));
+    }//GEN-LAST:event_btn_editrecordMousePressed
+
+    private void btn_hapusrecordMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_hapusrecordMousePressed
+        btn_hapusrecord.setBackground(new java.awt.Color(0, 51, 102));
+    }//GEN-LAST:event_btn_hapusrecordMousePressed
+
+    private void btn_kembaliMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_kembaliMouseReleased
+        btn_kembali.setBackground(new java.awt.Color(0, 102, 102));
+    }//GEN-LAST:event_btn_kembaliMouseReleased
+
+    private void btn_tambahrecordMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_tambahrecordMouseReleased
+        btn_tambahrecord.setBackground(new java.awt.Color(0, 102, 102));
+    }//GEN-LAST:event_btn_tambahrecordMouseReleased
+
+    private void btn_editrecordMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_editrecordMouseReleased
+        btn_editrecord.setBackground(new java.awt.Color(0, 102, 102));
+    }//GEN-LAST:event_btn_editrecordMouseReleased
+
+    private void btn_hapusrecordMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_hapusrecordMouseReleased
+        btn_hapusrecord.setBackground(new java.awt.Color(0, 102, 102));
+    }//GEN-LAST:event_btn_hapusrecordMouseReleased
     
     /**
      * @param args the command line arguments
@@ -257,6 +382,8 @@ public class F_Kontak extends javax.swing.JFrame {
     private javax.swing.JButton btn_hapusrecord;
     private javax.swing.JButton btn_kembali;
     private javax.swing.JButton btn_tambahrecord;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lbl_judul;
     private javax.swing.JTable tbl_kontak;

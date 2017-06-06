@@ -77,144 +77,230 @@ public class F_Formkontak extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        lbl_judul = new javax.swing.JLabel();
-        lbl_name = new javax.swing.JLabel();
-        lbl_nomorhp = new javax.swing.JLabel();
-        lbl_keterangan = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        btn_kembali = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
         txt_nama = new javax.swing.JTextField();
         txt_nomorhp = new javax.swing.JTextField();
         btn_konfirmasi = new javax.swing.JButton();
-        btn_kembali = new javax.swing.JButton();
         radio_siswa = new javax.swing.JRadioButton();
         radio_guru = new javax.swing.JRadioButton();
         radio_ortusiswa = new javax.swing.JRadioButton();
+        lbl_judul = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        lbl_name = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        lbl_nomorhp = new javax.swing.JLabel();
+        lbl_keterangan = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
+        jSeparator2 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
 
-        lbl_judul.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
-        lbl_judul.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl_judul.setText("Form Kontak");
+        jPanel1.setBackground(new java.awt.Color(0, 102, 102));
 
-        lbl_name.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
-        lbl_name.setText("Nama                   :");
-
-        lbl_nomorhp.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
-        lbl_nomorhp.setText("Nomor HP           :");
-
-        lbl_keterangan.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
-        lbl_keterangan.setText("Keterangan           :");
-
-        txt_nama.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
-        txt_nama.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txt_namaKeyTyped(evt);
+        btn_kembali.setBackground(new java.awt.Color(0, 204, 204));
+        btn_kembali.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        btn_kembali.setForeground(new java.awt.Color(255, 255, 255));
+        btn_kembali.setText("BACK");
+        btn_kembali.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        btn_kembali.setContentAreaFilled(false);
+        btn_kembali.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btn_kembaliMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                btn_kembaliMouseReleased(evt);
             }
         });
-
-        txt_nomorhp.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
-        txt_nomorhp.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txt_nomorhpKeyTyped(evt);
-            }
-        });
-
-        btn_konfirmasi.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
-        btn_konfirmasi.setText("Konfirmasi");
-        btn_konfirmasi.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_konfirmasiActionPerformed(evt);
-            }
-        });
-
-        btn_kembali.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
-        btn_kembali.setText("Kembali");
         btn_kembali.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_kembaliActionPerformed(evt);
             }
         });
 
-        radio_siswa.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(37, 37, 37)
+                .addComponent(btn_kembali, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(38, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btn_kembali, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(32, 32, 32))
+        );
+
+        jPanel2.setBackground(new java.awt.Color(0, 51, 51));
+
+        txt_nama.setBackground(new java.awt.Color(0, 51, 51));
+        txt_nama.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        txt_nama.setForeground(new java.awt.Color(255, 255, 255));
+        txt_nama.setBorder(null);
+        txt_nama.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_namaKeyTyped(evt);
+            }
+        });
+
+        txt_nomorhp.setBackground(new java.awt.Color(0, 51, 51));
+        txt_nomorhp.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        txt_nomorhp.setForeground(new java.awt.Color(255, 255, 255));
+        txt_nomorhp.setBorder(null);
+        txt_nomorhp.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_nomorhpKeyTyped(evt);
+            }
+        });
+
+        btn_konfirmasi.setBackground(new java.awt.Color(0, 204, 204));
+        btn_konfirmasi.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        btn_konfirmasi.setForeground(new java.awt.Color(255, 255, 255));
+        btn_konfirmasi.setText("CONFIRM");
+        btn_konfirmasi.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        btn_konfirmasi.setContentAreaFilled(false);
+        btn_konfirmasi.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btn_konfirmasiMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                btn_konfirmasiMouseReleased(evt);
+            }
+        });
+        btn_konfirmasi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_konfirmasiActionPerformed(evt);
+            }
+        });
+
+        radio_siswa.setBackground(new java.awt.Color(0, 51, 51));
+        radio_siswa.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
+        radio_siswa.setForeground(new java.awt.Color(255, 255, 255));
         radio_siswa.setText("Siswa");
 
-        radio_guru.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        radio_guru.setBackground(new java.awt.Color(0, 51, 51));
+        radio_guru.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
+        radio_guru.setForeground(new java.awt.Color(255, 255, 255));
         radio_guru.setText("Guru");
 
-        radio_ortusiswa.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        radio_ortusiswa.setBackground(new java.awt.Color(0, 51, 51));
+        radio_ortusiswa.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
+        radio_ortusiswa.setForeground(new java.awt.Color(255, 255, 255));
         radio_ortusiswa.setText("Orang Tua Siswa");
 
-        jLabel1.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        lbl_judul.setFont(new java.awt.Font("Century Gothic", 0, 24)); // NOI18N
+        lbl_judul.setForeground(new java.awt.Color(255, 255, 255));
+        lbl_judul.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl_judul.setText("Form Kontak");
+
+        jLabel1.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("*Maksimal 50 Karakter*");
 
-        jLabel2.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        lbl_name.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
+        lbl_name.setForeground(new java.awt.Color(255, 255, 255));
+        lbl_name.setText("Nama");
+
+        jLabel2.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("*Maksimal 15 Angka*");
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+        lbl_nomorhp.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
+        lbl_nomorhp.setForeground(new java.awt.Color(255, 255, 255));
+        lbl_nomorhp.setText("Nomor HP");
+
+        lbl_keterangan.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
+        lbl_keterangan.setForeground(new java.awt.Color(255, 255, 255));
+        lbl_keterangan.setText("Keterangan :");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(42, 42, 42)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(lbl_keterangan, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(lbl_nomorhp, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lbl_name, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(radio_siswa)
+                        .addGap(108, 108, 108)
+                        .addComponent(radio_guru))
+                    .addComponent(radio_ortusiswa)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(txt_nomorhp, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jSeparator2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel2))
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jLabel1)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lbl_judul, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(txt_nama)
+                                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(136, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lbl_judul, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(150, 150, 150))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(210, 210, 210)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                            .addGap(63, 63, 63)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(btn_kembali, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(lbl_name, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(lbl_nomorhp, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(lbl_keterangan, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGap(30, 30, 30)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txt_nomorhp, javax.swing.GroupLayout.DEFAULT_SIZE, 265, Short.MAX_VALUE)
-                                    .addComponent(radio_ortusiswa)
-                                    .addComponent(radio_siswa)
-                                    .addComponent(txt_nama))
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(radio_guru)
-                                    .addComponent(btn_konfirmasi, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                .addContainerGap(50, Short.MAX_VALUE))
+                .addComponent(btn_konfirmasi, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(28, 28, 28))
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(50, 50, 50)
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(38, 38, 38)
                 .addComponent(lbl_judul)
-                .addGap(50, 50, 50)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbl_name)
-                    .addComponent(txt_nama, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(63, 63, 63)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txt_nama, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbl_name))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel1)
-                .addGap(25, 25, 25)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGap(38, 38, 38)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbl_nomorhp)
                     .addComponent(txt_nomorhp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 5, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel2)
-                .addGap(25, 25, 25)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGap(34, 34, 34)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbl_keterangan)
                     .addComponent(radio_siswa)
                     .addComponent(radio_guru))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(radio_ortusiswa)
-                .addGap(30, 30, 30)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btn_kembali)
-                    .addComponent(btn_konfirmasi))
-                .addContainerGap(50, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btn_konfirmasi, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(38, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -297,6 +383,22 @@ public class F_Formkontak extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_txt_nomorhpKeyTyped
 
+    private void btn_kembaliMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_kembaliMousePressed
+       btn_kembali.setBackground(new java.awt.Color(0, 51, 102));
+    }//GEN-LAST:event_btn_kembaliMousePressed
+
+    private void btn_konfirmasiMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_konfirmasiMousePressed
+        btn_konfirmasi.setBackground(new java.awt.Color(0, 51, 102));
+    }//GEN-LAST:event_btn_konfirmasiMousePressed
+
+    private void btn_kembaliMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_kembaliMouseReleased
+        btn_kembali.setBackground(new java.awt.Color(0, 102, 102));
+    }//GEN-LAST:event_btn_kembaliMouseReleased
+
+    private void btn_konfirmasiMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_konfirmasiMouseReleased
+        btn_konfirmasi.setBackground(new java.awt.Color(0, 102, 102));
+    }//GEN-LAST:event_btn_konfirmasiMouseReleased
+
     /**
      * @param args the command line arguments
      */
@@ -337,6 +439,10 @@ public class F_Formkontak extends javax.swing.JFrame {
     private javax.swing.JButton btn_konfirmasi;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
     private javax.swing.JLabel lbl_judul;
     private javax.swing.JLabel lbl_keterangan;
     private javax.swing.JLabel lbl_name;

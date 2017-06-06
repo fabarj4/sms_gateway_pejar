@@ -184,7 +184,7 @@ public class F_Pesan extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        cmbBox_Tipe = new javax.swing.JComboBox<>();
+        cmbBox_Tipe = new javax.swing.JComboBox<String>();
         jLabel3 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         in_search = new javax.swing.JTextField();
@@ -203,7 +203,7 @@ public class F_Pesan extends javax.swing.JFrame {
         cmbBox_Tipe.setBackground(new java.awt.Color(102, 102, 102));
         cmbBox_Tipe.setFont(new java.awt.Font("Century Gothic", 0, 11)); // NOI18N
         cmbBox_Tipe.setForeground(new java.awt.Color(0, 51, 51));
-        cmbBox_Tipe.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Semua", "Guru", "Siswa", "Orang Tua Siswa" }));
+        cmbBox_Tipe.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Semua", "Guru", "Siswa", "Orang Tua Siswa" }));
         cmbBox_Tipe.setBorder(null);
 
         jLabel3.setBackground(new java.awt.Color(255, 255, 255));
@@ -256,7 +256,7 @@ public class F_Pesan extends javax.swing.JFrame {
         jScrollPane1.setViewportView(table_kontak);
 
         jButton1.setBackground(new java.awt.Color(0, 204, 204));
-        jButton1.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        jButton1.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Kirim");
         jButton1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -281,7 +281,7 @@ public class F_Pesan extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -319,10 +319,10 @@ public class F_Pesan extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(22, Short.MAX_VALUE))
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 312, Short.MAX_VALUE)))
+                .addGap(18, 18, 18)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(46, 46, 46))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -335,7 +335,9 @@ public class F_Pesan extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
