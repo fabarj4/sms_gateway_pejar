@@ -1,12 +1,12 @@
-# JDK java yang digunakan : 
+JDK java yang digunakan : 
   - Java JDK 32 Bit x86
 
-# library yang digunakan :
+library yang digunakan :
   - MySQL JDBC Driver
   - smslib-3.5.3
   - log4j-1.2.16
 
-# Konfigurasi SMSLib :
+Konfigurasi SMSLib :
 terdapat 3 file dalam folder library
   1. comm.jar
   2. win32com.dll
@@ -40,13 +40,11 @@ Langkat 3: Copy javax.comm.properties to
 ```
 
 
-### Kelas 4IA01 :
+Kelas 4IA01 :
 
-| Nama | NIM |
-| ------ | ------ |
-| Budhi Utama Ganda Pamungkas | 51413799 |
-| Cahyaning Ayu Pertiwi  | 51413720 |
-| Faisal Akbar | 53413109 |
-| Nabilah |   |
+1. Budhi Utama Ganda Pamungkas 51413799
+2. Cahyaning Ayu Pertiwi 51413720
+3. Faisal Akbar 53413109 
+4. Nabilah 
 
 **Pengajar : Sunarko**
