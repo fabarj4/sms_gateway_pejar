@@ -130,6 +130,11 @@ public class F_Kontak extends javax.swing.JFrame {
 
         btn_kembali.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         btn_kembali.setText("Kembali");
+        btn_kembali.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_kembaliActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -206,6 +211,11 @@ public class F_Kontak extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_btn_hapusrecordActionPerformed
+
+    private void btn_kembaliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_kembaliActionPerformed
+        // TODO add your handling code here:
+        dispose();
+    }//GEN-LAST:event_btn_kembaliActionPerformed
     
     /**
      * @param args the command line arguments
